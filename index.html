@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Официальный сайт FernieX</title>
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/buttons.css">
+<link rel="stylesheet" href="css/modal.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/menu-section.css">
+</head>
+<body class="dark-theme">
+
+<button id="theme-toggle-btn">Сменить тему</button>
+
+<!-- Секции -->
+<div id="home" class="menu-section visible">
+  <h1>Добро пожаловать в FernieX!</h1>
+  <p>Этот бот создан для развлечения в чате с друзьями. Присоединяйтесь, играйте, соревнуйтесь и получайте удовольствие от игры!</p>
+  <div class="buttons-container">
+    <button id="telegram-button" onclick="window.location.href='https://t.me/FernieUIBot'">Перейти в FernieX</button>
+  </div>
+  <div class="faq">
+    <h2>❓ Часто задаваемые вопросы</h2>
+    <ul>
+      <li><strong>Как переключить тему?</strong> Нажмите на кнопку 🌙 / 🌞.</li>
+      <li><strong>Какие команды доступны?</strong> Нажмите "Список команд".</li>
+      <li><strong>Что такое система такси?</strong> Выполняя заказы, зарабатываются монеты и очки.</li>
+      <li><strong>Как использовать магазин?</strong> Покупайте предметы для улучшения профиля.</li>
+    </ul>
+  </div>
+</div>
+  
+<div id="news" class="menu-section">
+  <h2>Новости</h2>
+  <div class="news-item">
+    <h3>Обновление сайта</h3>
+    <p>Переработка официального сайта FernieX</p>
+    <span>Дата: 24.08.2025</span>
+  </div>
+  <div class="news-item">
+    <h3>Обновление бота</h3>
+    <p>Обновление официального бота до версии FernieX - 9.4</p>
+    <span>Дата: 23.08.2025</span>
+  </div>
+</div>
+
+<div id="tech" class="menu-section">
+  <h2>Техническая информация</h2>
+  <p>В разработке...</p>
+</div>
+
+
+<!-- Нижнее меню -->
+<div class="bottom-menu">
+  <button class="menu-btn active" data-section="home">Главная</button>
+  <button class="menu-btn" data-section="news">Новости</button>
+  <button class="menu-btn" data-section="tech">Техническая информация</button>
+</div>
+
+<div class="footer">
+  <p>Все права защищены сервисом FernieX</p>
+  <p>
+    Использование подразумевает согласие с 
+    <a href="/terms.html" target="_blank">условиями</a> и 
+    <a href="/privacy.html" target="_blank">политикой конфиденциальности</a>.
+  </p>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
