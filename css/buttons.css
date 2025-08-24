@@ -1,0 +1,140 @@
+#theme-toggle-btn,
+#telegram-button,
+#toggle-commands,
+#toggle-update {
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.3em;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: box-shadow 0.4s ease, transform 0.2s;
+}
+
+/* === Кнопка смены темы === */
+#theme-toggle-btn {
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  background: linear-gradient(45deg, #ff7f00, #d70000, #ff7f00, #d70000);
+  background-size: 400% 400%;
+  animation: colorShift 5s linear infinite;
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+#theme-toggle-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px rgba(255,0,0,0.9);
+}
+
+#theme-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+/* === Кнопки Telegram, команд, обновлений === */
+#telegram-button,
+#toggle-commands,
+#toggle-update {
+  background: linear-gradient(270deg, #ff7f00, #ff0000, #ff7f00);
+  background-size: 400% 400%;
+  animation: buttonGlow 8s ease infinite;
+  margin-top: 20px;
+  flex-shrink: 0;
+}
+
+#telegram-button:hover,
+#toggle-commands:hover,
+#toggle-update:hover {
+  box-shadow: 0 0 20px 5px yellow;
+  transform: scale(1.05);
+}
+
+#telegram-button:active,
+#toggle-commands:active,
+#toggle-update:active {
+  transform: scale(0.95);
+}
+
+/* === Анимации кнопок === */
+@keyframes colorShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes buttonGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* === Нижнее меню === */
+.bottom-menu {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  min-width: 280px;
+  max-width: 600px;
+  background: rgba(20,20,20,0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 50px 50px 0 0;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  z-index: 1000;
+  box-shadow: 0 -5px 25px rgba(0,0,0,0.5);
+  animation: slideUp 1s ease-out forwards;
+}
+
+.bottom-menu .menu-btn {
+  background: linear-gradient(270deg, #ff7f00, #ff0000, #ff7f00);
+  background-size: 400% 400%;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s, background 0.3s;
+  font-size: 1em;
+  animation: buttonGlow 8s ease infinite, slideButtonUp 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Отдельные задержки анимации для кнопок меню */
+.bottom-menu .menu-btn:nth-child(1) { animation-delay: 0.1s, 0s; }
+.bottom-menu .menu-btn:nth-child(2) { animation-delay: 0.3s, 0s; }
+.bottom-menu .menu-btn:nth-child(3) { animation-delay: 0.5s, 0s; }
+
+.bottom-menu .menu-btn:hover {
+  box-shadow: 0 0 15px 5px #ffeb3b;
+  transform: scale(1.05);
+}
+
+.bottom-menu .menu-btn.active {
+  background: linear-gradient(270deg, #ffff00, #ffcc00, #ffff00);
+  transform: scale(1.1);
+  box-shadow: 0 0 25px 8px #ffeb3b;
+}
+
+/* === Анимации === */
+@keyframes slideUp {
+  0% { transform: translateX(-50%) translateY(100px); opacity: 0; }
+  100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+}
+
+@keyframes slideButtonUp {
+  0% { transform: translateY(30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* === Отступ снизу для body, чтобы меню не перекрывало контент === */
+body {
+  padding-bottom: 100px;
+}
