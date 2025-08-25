@@ -73,3 +73,14 @@ function animateTechSection() {
 
 // === Стартовая анимация главной секции ===
 window.addEventListener('load', () => animateHomeSection());
+// Всплывающее окно "Список команд"
+const commandsBtn = document.querySelector('.button-block button');
+const popup = document.getElementById('popupCommands');
+
+commandsBtn.addEventListener('click', () => {
+  popup.classList.add('show');
+  
+  // Авто-скрытие через 3 секунды
+  setTimeout(() => popup.classList.remove('show'), 3000);
+});
+
