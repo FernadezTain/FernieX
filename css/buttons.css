@@ -132,8 +132,8 @@ body { padding-bottom: 100px; }
   #toggle-commands,
   #toggle-update,
   .bottom-menu .menu-btn {
-    padding: 8px 14px;
-    font-size: 0.9em;
+    padding: 8px 10px;   /* уменьшил padding */
+    font-size: 0.85em;   /* чуть компактнее текст */
     border-radius: 8px;
   }
 
@@ -143,13 +143,15 @@ body { padding-bottom: 100px; }
     transform: none;
     width: 100%;
     border-radius: 0;
-    justify-content: space-between; /* 🔥 равномерно по ширине */
-    padding: 8px 12px;
-    gap: 8px;
+    justify-content: space-between; 
+    padding: 6px;        /* меньше внутренний отступ */
+    gap: 6px;            /* меньше расстояние между кнопками */
+    box-sizing: border-box;
   }
 
   .bottom-menu .menu-btn {
-    flex: 1;             /* 🔥 все кнопки равной ширины */
+    flex: 1;             /* все кнопки равной ширины */
     text-align: center;
+    min-width: 0;        /* 🔥 чтобы кнопки не "распирало" текстом */
   }
 }
