@@ -27,6 +27,9 @@ menuButtons.forEach(btn => {
     // Анимация главной секции
     if(btn.dataset.section === 'home') animateHomeSection();
 
+    // Анимация новостей
+    if(btn.dataset.section === 'news') animateNewsSection();
+
     // Скролл к секции (для news и tech)
     if(btn.dataset.section !== 'home') scrollToSection(btn.dataset.section);
   });
@@ -51,22 +54,36 @@ function animateHomeSection() {
   // Анимация текста
   textEls.forEach((el, i) => {
     el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
+    el.style.transform = 'translateY(20px)';
     setTimeout(() => {
-      el.style.transition = 'all 0.6s ease-out';
+      el.style.transition = 'opacity 0.3s ease-out, transform 0.3s ease-out';
       el.style.opacity = '1';
       el.style.transform = 'translateY(0)';
-    }, i * 150);
+    }, i * 100); // ускоренная последовательность
   });
 
   // Анимация кнопки Telegram
   telegramBtn.style.opacity = '0';
-  telegramBtn.style.transform = 'translateY(30px)';
+  telegramBtn.style.transform = 'translateY(20px)';
   setTimeout(() => {
-    telegramBtn.style.transition = 'all 0.6s ease-out';
+    telegramBtn.style.transition = 'opacity 0.3s ease-out, transform 0.3s ease-out';
     telegramBtn.style.opacity = '1';
     telegramBtn.style.transform = 'translateY(0)';
-  }, 300);
+  }, 200);
+}
+
+// === Анимация секции новостей ===
+function animateNewsSection() {
+  const newsItems = document.querySelectorAll('#news .news-item');
+  newsItems.forEach((item, i) => {
+    item.style.opacity = '0';
+    item.style.transform = 'translateY(10px)';
+    setTimeout(() => {
+      item.style.transition = 'opacity 0.3s ease-out, transform 0.3s ease-out';
+      item.style.opacity = '1';
+      item.style.transform = 'translateY(0)';
+    }, i * 100);
+  });
 }
 
 // === Запуск анимации при загрузке страницы ===
