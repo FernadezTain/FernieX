@@ -38,7 +38,7 @@ p {
   color: #bbb;
 }
 
-/* === FAQ светлая тема === */
+/* === FAQ стеклянная тема === */
 .faq {
   font-size: 1.1em;
   margin-top: 40px;
@@ -54,6 +54,18 @@ p {
   opacity: 0;
   transform: translateY(10px);
   transition: all 0.3s ease;
+
+  /* Стеклянная рамка и тень в светлой теме */
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+body.light-theme .faq {
+  background: rgba(255, 255, 255, 0.95); /* почти белый фон для светлой темы */
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  color: #111;
 }
 
 .faq.show {
