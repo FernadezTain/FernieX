@@ -32,11 +32,12 @@ menuButtons.forEach(btn => {
   });
 });
 
-// === Анимация главной секции ===
 function animateHomeSection() {
   const homeText = document.querySelectorAll('#home h1, #home p');
   const telegramBtn = document.getElementById('telegram-button');
+  const faqBlock = document.querySelectorAll('#home .faq');
 
+  // Текст и кнопка
   homeText.forEach((el, i) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
@@ -56,6 +57,12 @@ function animateHomeSection() {
       telegramBtn.style.transform = 'translateY(0)';
     }, 200);
   }
+
+  // FAQ
+  faqBlock.forEach((item, i) => {
+    item.classList.remove('show');
+    setTimeout(() => item.classList.add('show'), i * 100);
+  });
 }
 
 // === Анимация новостей ===
