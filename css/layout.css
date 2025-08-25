@@ -54,6 +54,12 @@ p {
 .faq li:hover { color: #ff0080; }
 
 /* === Тёмная тема: как было === */
+/* Светлая тема: заголовки блоков читаемые */
+body.light-theme #news h2,
+body.light-theme #tech h2 {
+  color: #111;      /* тёмно-серый для читаемости */
+}
+
 .news-item {
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(10px);
