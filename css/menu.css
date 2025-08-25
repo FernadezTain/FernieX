@@ -1,20 +1,22 @@
-/* === Нижнее меню (обёртка) === */
 .bottom-menu {
   position: fixed;
-  bottom: 0;                /* прижимаем к низу */
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: auto;
   min-width: 280px;
   max-width: 600px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
   z-index: 1000;
 }
 
-/* === Кнопки нижнего меню === */
+/* Каркас кнопок, без цветов и анимаций */
 .bottom-menu .menu-btn {
-  flex: 1;                  /* все кнопки равной ширины */
+  flex: 1;          /* все кнопки равной ширины */
   text-align: center;
-  min-width: 0;             /* не даём тексту раздвигать кнопку */
+  min-width: 0;     /* не раздвигать контейнер */
 }
 
 /* 📱 Адаптив для мобильных */
@@ -22,17 +24,15 @@
   .bottom-menu {
     left: 0;
     transform: none;
-    width: 100%;             /* меню во всю ширину экрана */
-    display: flex;
+    width: 100%;
     justify-content: space-between;
-    align-items: center;
     padding: 6px;
     gap: 6px;
     box-sizing: border-box;
   }
 
   .bottom-menu .menu-btn {
-    flex: 1;                 /* кнопки делятся равномерно */
+    flex: 1;
     padding: 8px 10px;
     font-size: 0.85em;
     border-radius: 8px;
