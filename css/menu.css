@@ -43,3 +43,9 @@
     font-size: 0.9em;
   }
 }
+
+@media (max-width: 480px) {
+  .bottom-menu { padding: 6px 8px; gap: 8px; }
+  .bottom-menu .menu-btn { padding: 6px 10px; font-size: 0.85em; }
+}
+
