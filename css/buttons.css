@@ -1,16 +1,16 @@
-/* === Универсальные кнопки (ПК по умолчанию) === */
+/* === Общие кнопки === */
 #theme-toggle-btn,
 #telegram-button,
 #toggle-commands,
 #toggle-update {
   color: white;
   border: none;
-  padding: 12px 24px; /* удобный размер для ПК */
-  font-size: 1.1em;
+  padding: 15px 30px;
+  font-size: 1.3em;
   font-weight: bold;
-  border-radius: 12px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: box-shadow 0.3s ease, transform 0.2s;
+  transition: box-shadow 0.4s ease, transform 0.2s;
 }
 
 /* === Кнопка смены темы === */
@@ -24,6 +24,7 @@
   box-shadow: 0 0 25px rgba(255, 0, 0, 0.7);
   z-index: 1000;
 }
+
 #theme-toggle-btn:hover { transform: scale(1.05); box-shadow: 0 0 35px rgba(255,0,0,0.9); }
 #theme-toggle-btn:active { transform: scale(0.95); }
 
@@ -37,17 +38,23 @@
   margin-top: 20px;
   flex-shrink: 0;
 }
+
 #telegram-button:hover,
 #toggle-commands:hover,
 #toggle-update:hover {
   box-shadow: 0 0 20px 5px yellow;
   transform: scale(1.05);
 }
+
 #telegram-button:active,
 #toggle-commands:active,
 #toggle-update:active {
   transform: scale(0.95);
 }
+
+/* === Анимации === */
+@keyframes colorShift { 0% {background-position:0% 50%;} 50% {background-position:100% 50%;} 100% {background-position:0% 50%;} }
+@keyframes buttonGlow { 0% {background-position:0% 50%;} 50% {background-position:100% 50%;} 100% {background-position:0% 50%;} }
 
 /* === Нижнее меню === */
 .bottom-menu {
@@ -58,16 +65,11 @@
   width: auto;
   min-width: 280px;
   max-width: 600px;
-  background: rgba(20,20,20,0.7);
-  backdrop-filter: blur(10px);
-  border-radius: 50px 50px 0 0;
-  padding: 12px 20px;
   display: flex;
   justify-content: center;
   gap: 15px;
   z-index: 1000;
   box-shadow: 0 -5px 25px rgba(0,0,0,0.5);
-  animation: slideUp 1s ease-out forwards;
 }
 
 .bottom-menu .menu-btn {
@@ -75,25 +77,21 @@
   background-size: 400% 400%;
   color: white;
   border: none;
-  padding: 12px 20px;  /* ПК размер */
+  padding: 10px 20px;
   font-weight: bold;
   border-radius: 30px;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.3s;
-  font-size: 1.1em;
-  animation: buttonGlow 8s ease infinite, slideButtonUp 0.6s ease-out forwards;
-  opacity: 0;
-  transform: translateY(30px);
+  font-size: 1em;
+  text-align: center;
+  flex: 1;
+  min-width: 0;
+  transition: transform 0.2s, box-shadow 0.3s, background 0.3s;
+  animation: buttonGlow 8s ease infinite;
 }
 
-/* Отдельные задержки анимации */
-.bottom-menu .menu-btn:nth-child(1) { animation-delay: 0.1s, 0s; }
-.bottom-menu .menu-btn:nth-child(2) { animation-delay: 0.3s, 0s; }
-.bottom-menu .menu-btn:nth-child(3) { animation-delay: 0.5s, 0s; }
-
 .bottom-menu .menu-btn:hover {
-  box-shadow: 0 0 15px 5px #ffeb3b;
   transform: scale(1.05);
+  box-shadow: 0 0 15px 5px #ffeb3b;
 }
 
 .bottom-menu .menu-btn.active {
@@ -102,56 +100,36 @@
   box-shadow: 0 0 25px 8px #ffeb3b;
 }
 
-/* === Анимации === */
-@keyframes colorShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-@keyframes buttonGlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-@keyframes slideUp {
-  0% { transform: translateX(-50%) translateY(100px); opacity: 0; }
-  100% { transform: translateX(-50%) translateY(0); opacity: 1; }
-}
-@keyframes slideButtonUp {
-  0% { transform: translateY(30px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
-}
+/* === Анимации меню === */
+@keyframes slideUp { 0% {transform:translateX(-50%) translateY(100px); opacity:0;} 100% {transform:translateX(-50%) translateY(0); opacity:1;} }
+@keyframes slideButtonUp { 0% {transform:translateY(30px); opacity:0;} 100% {transform:translateY(0); opacity:1;} }
 
-/* === Отступ снизу для body, чтобы меню не перекрывало контент === */
+/* === Отступ для контента === */
 body { padding-bottom: 100px; }
 
-/* === 📱 Оптимизация для мобильных === */
+/* === Мобильные стили === */
 @media (max-width: 480px) {
   #theme-toggle-btn,
   #telegram-button,
   #toggle-commands,
   #toggle-update,
   .bottom-menu .menu-btn {
-    padding: 8px 10px;   /* уменьшил padding */
-    font-size: 0.85em;   /* чуть компактнее текст */
+    padding: 8px 10px;
+    font-size: 0.85em;
     border-radius: 8px;
   }
 
   .bottom-menu {
-    bottom: 0;
     left: 0;
     transform: none;
     width: 100%;
-    border-radius: 0;
-    justify-content: space-between; 
-    padding: 6px;        /* меньше внутренний отступ */
-    gap: 6px;            /* меньше расстояние между кнопками */
+    justify-content: space-between;
+    padding: 6px;
+    gap: 6px;
     box-sizing: border-box;
   }
 
   .bottom-menu .menu-btn {
-    flex: 1;             /* все кнопки равной ширины */
-    text-align: center;
-    min-width: 0;        /* 🔥 чтобы кнопки не "распирало" текстом */
+    flex: 1;
   }
 }
