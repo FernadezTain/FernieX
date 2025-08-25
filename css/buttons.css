@@ -138,3 +138,10 @@
 body {
   padding-bottom: 100px;
 }
+
+/* === Мобильные кнопки === */
+@media (max-width: 480px) {
+  #theme-toggle-btn { top: 5px; left: 10px; padding: 12px 20px; font-size: 1em; }
+  #telegram-button, #toggle-commands, #toggle-update { padding: 12px 20px; font-size: 1em; }
+}
+
