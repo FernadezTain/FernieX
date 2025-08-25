@@ -82,6 +82,6 @@ window.addEventListener('load', () => animateHomeSection());
 const showCommandsBtn = document.getElementById('showCommandsBtn');
 if (showCommandsBtn) {
   showCommandsBtn.addEventListener('click', () => {
-    window.open('https://t.me/YourBotCommands', '_blank'); // ссылка на команды бота
+    window.open('http://fogames.tilda.ws/developind', '_blank'); // ссылка на команды бота
   });
 }
