@@ -63,9 +63,9 @@ p {
   opacity: 0;
   transform: translateY(10px);
 
-  /* Фиксированная ширина */
-  width: 500px; /* оптимальная ширина для ПК */
-  max-width: 100%; /* не выйдет за пределы контейнера */
+  /* Ширина для ПК */
+  width: 700px; 
+  max-width: 100%; 
   box-sizing: border-box;
 
   display: flex;
@@ -88,12 +88,11 @@ p {
 
 /* === Адаптивность === */
 @media (max-width: 768px) {
-  .news-item { width: 90%; } /* немного меньше на планшетах */
+  .news-item { width: 90%; } /* планшеты */
 }
 @media (max-width: 480px) {
-  .news-item { width: 95%; padding: 12px 15px; } /* почти на всю ширину на телефонах */
+  .news-item { width: 95%; padding: 12px 15px; } /* телефоны */
 }
-
 
 /* === Команды и обновления === */
 .command-section, .update-section {
