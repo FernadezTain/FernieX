@@ -73,3 +73,8 @@ function animateTechSection() {
 
 // === Стартовая анимация главной секции ===
 window.addEventListener('load', () => animateHomeSection());
+const botCommandsBtn = document.getElementById('bot-commands-btn');
+botCommandsBtn.addEventListener('click', () => {
+  window.open('https://t.me/YourBotCommands', '_blank'); // открытие ссылки в новой вкладке
+});
+
