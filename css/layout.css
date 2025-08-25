@@ -53,7 +53,7 @@ p {
 .faq li { margin: 10px 0; color: #bbb; }
 .faq li:hover { color: #ff0080; }
 
-/* === Новости одинакового размера === */
+/* === Новости одинаковой ширины === */
 .news-item {
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(10px);
@@ -63,28 +63,19 @@ p {
   opacity: 0;
   transform: translateY(10px);
 
-  /* Фиксированная высота */
-  height: 150px; /* можно подкорректировать под оптимальный размер */
+  /* Фиксированная ширина */
+  width: 500px; /* оптимальная ширина для ПК */
+  max-width: 100%; /* не выйдет за пределы контейнера */
+  box-sizing: border-box;
+
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
+  justify-content: flex-start;
 }
 
-.news-item h3 { 
-  margin: 0 0 5px; 
-  flex-shrink: 0;
-}
-.news-item p { 
-  margin: 0 0 8px; 
-  flex-grow: 1; /* занимает оставшееся место */
-  overflow: hidden;
-}
-.news-item span { 
-  font-size: 0.85em; 
-  color: #ffcc00; 
-  flex-shrink: 0;
-}
+.news-item h3 { margin: 0 0 5px; }
+.news-item p { margin: 0 0 8px; }
+.news-item span { font-size: 0.85em; color: #ffcc00; }
 
 /* Быстрая анимация новостей */
 .news-item.show {
@@ -95,17 +86,12 @@ p {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* === Адаптивность для мобильных === */
+/* === Адаптивность === */
 @media (max-width: 768px) {
-  .news-item {
-    height: 130px; /* чуть меньше на планшетах */
-  }
+  .news-item { width: 90%; } /* немного меньше на планшетах */
 }
 @media (max-width: 480px) {
-  .news-item {
-    height: 120px; /* оптимальный размер для телефонов */
-    padding: 12px 15px;
-  }
+  .news-item { width: 95%; padding: 12px 15px; } /* почти на всю ширину на телефонах */
 }
 
 
