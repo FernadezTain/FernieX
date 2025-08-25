@@ -53,13 +53,13 @@ p {
 .faq li { margin: 10px 0; color: #bbb; }
 .faq li:hover { color: #ff0080; }
 
-/* === Тёмная тема: как было === */
 /* Светлая тема: заголовки блоков читаемые */
 body.light-theme #news h2,
 body.light-theme #tech h2 {
-  color: #111;      /* тёмно-серый для читаемости */
+  color: #111; /* тёмно-серый для читаемости */
 }
 
+/* Новости */
 .news-item {
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(10px);
@@ -69,8 +69,8 @@ body.light-theme #tech h2 {
   opacity: 0;
   transform: translateY(10px);
 
-  width: 1100px; 
-  max-width: 100%; 
+  width: 1100px;
+  max-width: 100%;
   box-sizing: border-box;
 
   display: flex;
@@ -78,23 +78,52 @@ body.light-theme #tech h2 {
   justify-content: flex-start;
 }
 
-.news-item h3 { margin: 0 0 5px; }
-.news-item p { margin: 0 0 8px; }
-.news-item span { font-size: 0.85em; color: #ffcc00; }
+.news-item h3 {
+  margin: 0 0 5px;
+}
+
+.news-item p {
+  margin: 0 0 8px;
+}
+
+.news-item span {
+  font-size: 0.85em;
+  color: #ffcc00;
+}
 
 .news-item.show {
   animation: newsFadeIn 0.3s ease forwards;
 }
 
 @keyframes newsFadeIn {
-  to { opacity: 1; transform: translateY(0); }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Стиль кнопки */
+/* Техническая информация */
+.tech-block {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 15px;
+  width: 700px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.tech-block p {
+  margin: 8px 0;
+  color: #ccc;
+}
+
+/* Кнопки */
 .button-block button {
   width: 100%;
   padding: 12px 0;
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: bold;
   color: white;
   background: linear-gradient(270deg, #ff7f00, #ff0000, #ff7f00);
@@ -102,8 +131,8 @@ body.light-theme #tech h2 {
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-  animation: buttonGlow 6s ease infinite;
+  transition: transform 0.2s, box-shadow 0.3s;
+  animation: buttonGlow 8s ease infinite;
 }
 
 .button-block button:hover {
@@ -116,33 +145,48 @@ body.light-theme #tech h2 {
   50% { background-position: 100% 50%; }
 }
 
-/* Всплывающее окно */
-.popup-commands {
-  position: fixed;
-  bottom: -250px; /* спрятано снизу */
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0,0,0,0.85);
-  color: #fff;
-  padding: 20px 30px;
-  border-radius: 20px 20px 0 0;
-  box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
-  text-align: center;
-  font-size: 1.1em;
-  max-width: 90%;
-  z-index: 9999;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+/* Светлая тема: блоки заметны на белом фоне */
+body.light-theme .news-item,
+body.light-theme .tech-block {
+  background: rgba(255, 255, 255, 0.95); /* чуть прозрачный белый */
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  border: 1px solid rgba(0,0,0,0.1); /* тонкая граница */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* лёгкая тень */
 }
 
-/* Класс для отображения с анимацией */
-.popup-commands.show {
-  bottom: 0;
-  opacity: 1;
-  pointer-events: auto;
+body.light-theme .news-item h3,
+body.light-theme .tech-block p {
+  color: #111;
 }
 
+body.light-theme .news-item p,
+body.light-theme .news-item span {
+  color: #222;
+}
+
+body.light-theme .button-block button {
+  color: white;
+}
+
+/* === Адаптивность === */
+@media (max-width: 768px) {
+  .news-item, .tech-block {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .news-item, .tech-block {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .button-block button {
+    font-size: 1em;
+    padding: 10px 0;
+  }
+}
 
 /* === Команды и обновления === */
 .command-section, .update-section {
