@@ -102,7 +102,7 @@ body.light-theme #tech h2 {
   }
 }
 
-/* Техническая информация */
+/* === Техническая информация с анимацией появления === */
 .tech-block {
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(10px);
@@ -112,6 +112,16 @@ body.light-theme #tech h2 {
   width: 700px;
   max-width: 100%;
   box-sizing: border-box;
+
+  /* Анимация появления */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.tech-block.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .tech-block p {
@@ -119,7 +129,7 @@ body.light-theme #tech h2 {
   color: #ccc;
 }
 
-/* Кнопки */
+/* === Кнопки === */
 .button-block button {
   width: 100%;
   padding: 12px 0;
@@ -145,7 +155,7 @@ body.light-theme #tech h2 {
   50% { background-position: 100% 50%; }
 }
 
-/* Светлая тема: блоки заметны на белом фоне */
+/* === Светлая тема: блоки заметны на белом фоне === */
 body.light-theme .news-item,
 body.light-theme .tech-block {
   background: rgba(255, 255, 255, 0.95); /* чуть прозрачный белый */
@@ -168,6 +178,7 @@ body.light-theme .news-item span {
 body.light-theme .button-block button {
   color: white;
 }
+
 
 /* === Адаптивность === */
 @media (max-width: 768px) {
