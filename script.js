@@ -24,6 +24,7 @@ menuButtons.forEach(btn => {
         if(sec.id === 'home') animateHomeSection();
         if(sec.id === 'news') animateNewsSection();
         if(sec.id === 'tech') animateTechSection();
+        if(sec.id === 'faq') animateFaqSection(); // добавлено
       } else {
         sec.classList.remove('visible');
       }
@@ -75,6 +76,15 @@ function animateTechSection() {
   });
 }
 
+// === Анимация FAQ ===
+function animateFaqSection() {
+  const faqItems = document.querySelectorAll('#faq .faq');
+  faqItems.forEach((item, i) => {
+    item.classList.remove('show'); // сброс
+    setTimeout(() => item.classList.add('show'), i * 100);
+  });
+}
+
 // === Стартовая анимация главной секции ===
 window.addEventListener('load', () => animateHomeSection());
 
@@ -85,4 +95,3 @@ if (showCommandsBtn) {
     window.open('http://fogames.tilda.ws/developind', '_self'); // ссылка откроется в этом же окне
   });
 }
-
