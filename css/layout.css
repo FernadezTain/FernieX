@@ -102,65 +102,50 @@ body.light-theme #tech h2 {
   box-sizing: border-box;
 }
 
-.tech-block p {
-  margin: 8px 0;
-  color: #ccc;
-}
-
-.button-block button {
-  width: 100%;
-  padding: 12px 0;
-  font-size: 1.1em;
-  font-weight: bold;
-  color: white;
-  background: linear-gradient(270deg, #ff7f00, #ff0000, #ff7f00);
-  background-size: 400% 400%;
-  border: none;
+/* === Анимация появления блоков Тех. информации === */
+.tech-block {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
   border-radius: 20px;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.3s;
-  animation: buttonGlow 8s ease infinite;
+  padding: 20px;
+  margin-bottom: 15px;
+
+  width: 700px;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease-out;
 }
 
-.button-block button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px 5px yellow;
+/* Класс для запуска анимации */
+.tech-block.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* Светлая тема: блоки заметны на белом фоне */
-body.light-theme .news-item,
+/* Светлая тема: блоки заметны */
 body.light-theme .tech-block {
-  background: rgba(255, 255, 255, 0.95); /* чуть прозрачный белый */
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(6px);
   border-radius: 20px;
-  border: 1px solid rgba(0,0,0,0.1); /* тонкая граница */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* лёгкая тень */
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
-body.light-theme .news-item h3,
 body.light-theme .tech-block p {
   color: #111;
 }
 
-body.light-theme .news-item p,
-body.light-theme .news-item span {
-  color: #222;
-}
-
-
-body.light-theme .button-block button {
-  color: white;
-}
-
-/* === Адаптивность === */
+/* Адаптивность */
 @media (max-width: 768px) {
-  .news-item, .tech-block { width: 90%; }
+  .tech-block { width: 90%; }
+}
+@media (max-width: 480px) {
+  .tech-block { width: 95%; padding: 15px; }
 }
 
-@media (max-width: 480px) {
-  .news-item, .tech-block { width: 95%; padding: 15px; }
-  .button-block button { font-size: 1em; padding: 10px 0; }
-}
 
 /* === Команды и обновления === */
 .command-section, .update-section {
