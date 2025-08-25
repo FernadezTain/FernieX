@@ -52,3 +52,9 @@
 /* FAQ виден только на главной */
 .faq { display: none; }
 #home .faq { display: block; margin-top: 40px; }
+
+@media (max-width: 480px) {
+  .menu-section { padding: 0 10px; min-height: calc(100vh - 120px); }
+  .news-item { padding: 10px 15px; }
+}
+
