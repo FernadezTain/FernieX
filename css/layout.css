@@ -114,12 +114,36 @@ p {
   }
 }
 
+/* Футер общий */
 .footer {
   text-align: center;
-  color: white;
-  padding: 20px 10px;
-  background-color: rgb(20,20,20);
+  padding: 0;
+  background: none;
+  box-shadow: none;
   font-size: 0.8em;
+  backdrop-filter: none;
 }
-.footer a { color: #ffcc00; text-decoration: none; }
-.footer a:hover { text-decoration: underline; }
+
+/* Цвет текста и ссылок по теме */
+body.dark-theme .footer {
+  color: white;
+}
+body.light-theme .footer {
+  color: #111;
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+body.dark-theme .footer a {
+  color: #ffcc00;
+}
+
+body.light-theme .footer a {
+  color: #0077cc; /* например, синие ссылки на светлом фоне */
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
