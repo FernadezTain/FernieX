@@ -19,12 +19,23 @@ menuButtons.forEach(btn => {
         sec.classList.add('visible');
         if(sec.id === 'home') animateHomeSection();
         if(sec.id === 'news') animateNewsSection();
+        if(sec.id === 'tech') animateTechSection(); // добавлено
       } else {
         sec.classList.remove('visible');
       }
     });
   });
 });
+
+// === Анимация тех. информации ===
+function animateTechSection() {
+  const techBlocks = document.querySelectorAll('#tech .tech-block');
+  techBlocks.forEach((block, i) => {
+    block.classList.remove('show'); // на случай повторного открытия
+    setTimeout(() => block.classList.add('show'), i * 150);
+  });
+}
+
 
 // === Анимация главной секции ===
 function animateHomeSection() {
@@ -58,14 +69,7 @@ function animateNewsSection() {
     setTimeout(() => item.classList.add('show'), i * 100);
   });
 }
-// === Анимация блоков технической информации ===
-function animateTechSection() {
-  const techBlocks = document.querySelectorAll('#tech .tech-block');
-  techBlocks.forEach((block, i) => {
-    block.classList.remove('show'); // сброс анимации
-    setTimeout(() => block.classList.add('show'), i * 120); // задержка по очереди
-  });
-}
+
 
 // === Стартовая анимация главной секции ===
 window.addEventListener('load', () => animateHomeSection());
