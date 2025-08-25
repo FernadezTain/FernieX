@@ -15,10 +15,12 @@ menuButtons.forEach(btn => {
     menuButtons.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
-    // Показать нужную секцию и анимацию
+    // Показать нужную секцию и запустить анимацию
     sections.forEach(sec => {
       if(sec.id === btn.dataset.section){
         sec.classList.add('visible');
+
+        // Запуск анимаций для каждой секции
         if(sec.id === 'home') animateHomeSection();
         if(sec.id === 'news') animateNewsSection();
         if(sec.id === 'tech') animateTechSection();
@@ -44,13 +46,15 @@ function animateHomeSection() {
     }, i * 80);
   });
 
-  telegramBtn.style.opacity = '0';
-  telegramBtn.style.transform = 'translateY(20px)';
-  setTimeout(() => {
-    telegramBtn.style.transition = 'all 0.3s ease-out';
-    telegramBtn.style.opacity = '1';
-    telegramBtn.style.transform = 'translateY(0)';
-  }, 200);
+  if (telegramBtn) {
+    telegramBtn.style.opacity = '0';
+    telegramBtn.style.transform = 'translateY(20px)';
+    setTimeout(() => {
+      telegramBtn.style.transition = 'all 0.3s ease-out';
+      telegramBtn.style.opacity = '1';
+      telegramBtn.style.transform = 'translateY(0)';
+    }, 200);
+  }
 }
 
 // === Анимация новостей ===
@@ -73,8 +77,11 @@ function animateTechSection() {
 
 // === Стартовая анимация главной секции ===
 window.addEventListener('load', () => animateHomeSection());
-const botCommandsBtn = document.getElementById('bot-commands-btn');
-botCommandsBtn.addEventListener('click', () => {
-  window.open('https://t.me/YourBotCommands', '_blank'); // открытие ссылки в новой вкладке
-});
 
+// === Кнопка "Команды Бота" ===
+const showCommandsBtn = document.getElementById('showCommandsBtn');
+if (showCommandsBtn) {
+  showCommandsBtn.addEventListener('click', () => {
+    window.open('https://t.me/YourBotCommands', '_blank'); // ссылка на команды бота
+  });
+}
