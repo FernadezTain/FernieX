@@ -121,23 +121,26 @@ p {
   box-shadow: 0 0 20px 5px yellow;
 }
 
-/* === Светлая тема: блоки светлее, текст читаемый === */
+/* Светлая тема: блоки заметны на белом фоне */
 body.light-theme .news-item,
 body.light-theme .tech-block {
-  background: rgba(255,255,255,0.9); /* светлый, слегка прозрачный */
+  background: rgba(255, 255, 255, 0.95); /* чуть прозрачный белый */
   backdrop-filter: blur(6px);
   border-radius: 20px;
+  border: 1px solid rgba(0,0,0,0.1); /* тонкая граница */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* лёгкая тень */
 }
 
 body.light-theme .news-item h3,
 body.light-theme .tech-block p {
-  color: #111; /* тёмный текст на светлом фоне */
+  color: #111;
 }
 
 body.light-theme .news-item p,
 body.light-theme .news-item span {
-  color: #222; 
+  color: #222;
 }
+
 
 body.light-theme .button-block button {
   color: white;
