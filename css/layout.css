@@ -148,6 +148,20 @@ p {
   color: #ffcc00;           /* ссылки желтые */
   text-decoration: none;
 }
+/* === Мобильная оптимизация === */
+@media (max-width: 768px) {
+  body { padding: 10px; }
+  h1 { font-size: 2em; }
+  p { font-size: 1.1em; }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 1.6em; }
+  p { font-size: 1em; }
+  .faq { padding: 15px; font-size: 0.95em; }
+  .command-section, .update-section { padding: 15px; }
+}
+
 
 .footer a:hover {
   text-decoration: underline;
