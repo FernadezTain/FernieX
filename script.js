@@ -11,31 +11,23 @@ const sections = document.querySelectorAll('.menu-section');
 
 menuButtons.forEach(btn => {
   btn.addEventListener('click', () => {
+    // Активная кнопка
     menuButtons.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
+    // Показать нужную секцию и анимацию
     sections.forEach(sec => {
       if(sec.id === btn.dataset.section){
         sec.classList.add('visible');
         if(sec.id === 'home') animateHomeSection();
         if(sec.id === 'news') animateNewsSection();
-        if(sec.id === 'tech') animateTechSection(); // добавлено
+        if(sec.id === 'tech') animateTechSection();
       } else {
         sec.classList.remove('visible');
       }
     });
   });
 });
-
-// === Анимация тех. информации ===
-function animateTechSection() {
-  const techBlocks = document.querySelectorAll('#tech .tech-block');
-  techBlocks.forEach((block, i) => {
-    block.classList.remove('show'); // на случай повторного открытия
-    setTimeout(() => block.classList.add('show'), i * 150);
-  });
-}
-
 
 // === Анимация главной секции ===
 function animateHomeSection() {
@@ -65,11 +57,19 @@ function animateHomeSection() {
 function animateNewsSection() {
   const newsItems = document.querySelectorAll('#news .news-item');
   newsItems.forEach((item, i) => {
-    item.classList.remove('show'); // на случай повторного открытия
+    item.classList.remove('show'); // сброс
     setTimeout(() => item.classList.add('show'), i * 100);
   });
 }
 
+// === Анимация Технической информации ===
+function animateTechSection() {
+  const techBlocks = document.querySelectorAll('#tech .tech-block');
+  techBlocks.forEach((block, i) => {
+    block.classList.remove('show'); // сброс на случай повторного открытия
+    setTimeout(() => block.classList.add('show'), i * 150); // плавная поочередная анимация
+  });
+}
 
 // === Стартовая анимация главной секции ===
 window.addEventListener('load', () => animateHomeSection());
