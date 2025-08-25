@@ -1,3 +1,4 @@
+/* === Общие стили === */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
@@ -12,12 +13,12 @@ body {
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
+/* === Контент главной секции === */
 .content {
   text-align: center;
   max-width: 1000px;
   width: 100%;
   opacity: 0;
-  animation: fadeInUp 2s ease 1s forwards;
   margin-top: 70px;
 }
 
@@ -28,17 +29,16 @@ h1 {
   background-size: 400% 400%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 5s ease infinite, fadeInUp 2s ease forwards;
+  animation: shimmer 5s ease infinite;
 }
 
 p {
   font-size: 1.2em;
   margin-bottom: 20px;
   color: #bbb;
-  opacity: 0;
-  animation: fadeInUp 2s ease 1.5s forwards;
 }
 
+/* === FAQ === */
 .faq {
   font-size: 1.1em;
   margin-top: 40px;
@@ -46,8 +46,6 @@ p {
   background-color: rgba(0, 0, 0, 0.8);
   padding: 20px;
   border-radius: 8px;
-  opacity: 0;
-  animation: fadeInUp 2s ease 2s forwards;
 }
 
 .faq h2 { color: #ffcc00; }
@@ -55,6 +53,31 @@ p {
 .faq li { margin: 10px 0; color: #bbb; }
 .faq li:hover { color: #ff0080; }
 
+/* === Новости === */
+.news-item {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.news-item h3 { margin: 0 0 5px; }
+.news-item p { margin: 0 0 8px; }
+.news-item span { font-size: 0.85em; color: #ffcc00; }
+
+/* === Быстрая анимация новостей === */
+.news-item.show {
+  animation: newsFadeIn 0.3s ease forwards;
+}
+
+@keyframes newsFadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Команды и обновления === */
 .command-section, .update-section {
   margin-top: 40px;
   padding: 20px;
@@ -88,18 +111,14 @@ p {
 }
 .command-section li:hover, .update-section li:hover { color: #ff0080; }
 
-/* Анимации */
-@keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(30px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
+/* === Анимации === */
 @keyframes shimmer {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* 📱 Адаптивность */
+/* === Адаптивность === */
 @media (max-width: 768px) {
   body { padding: 10px; }
   h1 { font-size: 2em; }
@@ -114,7 +133,7 @@ p {
   }
 }
 
-/* Футер общий */
+/* === Футер === */
 .footer {
   text-align: center;
   padding: 0;
@@ -123,27 +142,9 @@ p {
   font-size: 0.8em;
   backdrop-filter: none;
 }
-
-/* Цвет текста и ссылок по теме */
-body.dark-theme .footer {
-  color: white;
-}
-body.light-theme .footer {
-  color: #111;
-}
-
-.footer a {
-  text-decoration: none;
-}
-
-body.dark-theme .footer a {
-  color: #ffcc00;
-}
-
-body.light-theme .footer a {
-  color: #0077cc; /* например, синие ссылки на светлом фоне */
-}
-
-.footer a:hover {
-  text-decoration: underline;
-}
+body.dark-theme .footer { color: white; }
+body.light-theme .footer { color: #111; }
+.footer a { text-decoration: none; }
+body.dark-theme .footer a { color: #ffcc00; }
+body.light-theme .footer a { color: #0077cc; }
+.footer a:hover { text-decoration: underline; }
