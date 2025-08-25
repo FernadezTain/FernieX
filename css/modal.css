@@ -55,3 +55,9 @@
 @keyframes fadeInScale { 0% { opacity:0; transform:translate(-50%,-50%) scale(0.8);} 100% { opacity:1; transform:translate(-50%,-50%) scale(1);} }
 @keyframes fadeOutScale { 0% { opacity:1; transform:translate(-50%,-50%) scale(1);} 100% { opacity:0; transform:translate(-50%,-50%) scale(0.8);} }
 @keyframes colorFlow { 0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%} }
+
+@media (max-width: 480px) {
+  #restore-popup { padding: 15px 20px; font-size: 1em; min-width: 240px; }
+  #restore-account-btn { padding: 8px 12px; font-size: 0.9em; }
+}
+
