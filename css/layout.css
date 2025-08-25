@@ -94,6 +94,57 @@ p {
   .news-item { width: 95%; padding: 12px 15px; } /* телефоны */
 }
 
+/* === Техническая информация: блоки === */
+.tech-block {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 15px;
+
+  /* одинаковая ширина блоков */
+  width: 700px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.tech-block p {
+  margin: 8px 0;
+  color: #ccc;
+}
+
+/* Блок кнопки */
+.button-block button {
+  width: 100%;
+  padding: 12px 0;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(270deg, #ff7f00, #ff0000, #ff7f00);
+  background-size: 400% 400%;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s;
+  animation: buttonGlow 8s ease infinite;
+}
+
+.button-block button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px 5px yellow;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .tech-block { width: 90%; }
+}
+
+@media (max-width: 480px) {
+  .tech-block { width: 95%; padding: 15px; }
+  .button-block button { font-size: 1em; padding: 10px 0; }
+}
+
+
 /* === Команды и обновления === */
 .command-section, .update-section {
   margin-top: 40px;
