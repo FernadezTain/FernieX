@@ -58,6 +58,14 @@ function animateNewsSection() {
     setTimeout(() => item.classList.add('show'), i * 100);
   });
 }
+// === Анимация блоков технической информации ===
+function animateTechSection() {
+  const techBlocks = document.querySelectorAll('#tech .tech-block');
+  techBlocks.forEach((block, i) => {
+    block.classList.remove('show'); // сброс анимации
+    setTimeout(() => block.classList.add('show'), i * 120); // задержка по очереди
+  });
+}
 
 // === Стартовая анимация главной секции ===
 window.addEventListener('load', () => animateHomeSection());
