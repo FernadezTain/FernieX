@@ -74,6 +74,54 @@ function animateNewsSection() {
   });
 }
 
+// === Функция для расчёта возраста ===
+function calculateBotAge() {
+  const startDate = new Date(2025, 1, 20); // 20.02.2025 (месяцы с 0)
+  const now = new Date();
+  let years = now.getFullYear() - startDate.getFullYear();
+  let months = now.getMonth() - startDate.getMonth();
+  let days = now.getDate() - startDate.getDate();
+
+  if (days < 0) {
+    months -= 1;
+    days += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+  }
+  if (months < 0) {
+    years -= 1;
+    months += 12;
+  }
+
+  return { years, months, days };
+}
+
+// === Анимация возраста ===
+function animateAgeCounter() {
+  const botAgeElement = document.getElementById('bot-age');
+  if (!botAgeElement) return;
+
+  const age = calculateBotAge();
+  const duration = 2000;
+  const steps = Math.floor(duration / 30);
+  let step = 0;
+
+  clearInterval(botAgeElement.animationInterval); // очистка старого интервала
+  botAgeElement.animationInterval = setInterval(() => {
+    step++;
+    const progress = step / steps;
+
+    const years = Math.floor(age.years * progress);
+    const months = Math.floor(age.months * progress);
+    const days = Math.floor(age.days * progress);
+
+    botAgeElement.textContent = `${years}.${months}.${days}`;
+
+    if (step >= steps) {
+      botAgeElement.textContent = `${age.years}.${age.months}.${age.days}`;
+      clearInterval(botAgeElement.animationInterval);
+    }
+  }, 30);
+}
+
 // === Анимация Технической информации ===
 function animateTechSection() {
   const techBlocks = document.querySelectorAll('#tech .tech-block');
