@@ -1,80 +1,45 @@
-#restore-popup {
+.menu-section { 
   display: none;
-  position: fixed;
-  top: 50%; left: 50%;
-  background: #222;
-  color: white;
-  padding: 20px 30px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px #ff0000;
-  z-index: 2000;
-  min-width: 280px;
-  max-width: 90%;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  font-size: 1.1em;
   opacity: 0;
-  transform: translate(-50%, -50%) scale(0.8);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-#restore-popup.show { display: block; animation: fadeInScale 0.3s forwards; }
-#restore-popup.hide { animation: fadeOutScale 0.3s forwards; }
-
-#overlay {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.7);
-  z-index: 1999;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-#overlay.show { display: block; opacity: 1; }
-#overlay.hide { opacity: 0; }
-
-#close-popup {
-  position: absolute;
-  top:6px; right:8px;
-  background:transparent;
-  border:none;
-  font-size:1.6em;
-  color:white;
-  cursor:pointer;
-}
-
-#restore-account-btn {
-  position: fixed;
-  bottom:16px;
-  right:16px;
-  background: linear-gradient(270deg, #ffeb3b, #00c853, #ffeb3b);
-  background-size: 600% 600%;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
   color: white;
-  padding: 10px 16px;
-  font-weight: bold;
-  font-size: 1rem;
-  border-radius: 10px;
-  text-decoration: none;
-  box-shadow: 0 0 10px rgba(255,255,0,0.5);
-  z-index: 1000;
-  animation: colorFlow 5s ease infinite;
-  text-align: center;
+  padding: 0 20px;
+  min-height: calc(100vh - 100px);
 }
-#restore-account-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px yellow,0 0 30px rgba(0,200,83,0.8);
+.menu-section.visible { display: flex; opacity: 1; pointer-events: auto; }
+
+#home { gap: 20px; }
+
+#home h1, #home p {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
 }
 
-@media (max-width: 480px) {
-  #restore-account-btn {
-    bottom: 70px; 
-    right: 10px;
-    font-size: 0.9rem;
-    padding: 8px 12px;
-  }
+/* Исправлено: кнопка Telegram */
+#home #telegram-button {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+#home #telegram-button.show {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
-/* Анимации */
-@keyframes fadeInScale { 0% { opacity:0; transform:translate(-50%,-50%) scale(0.8);} 100% { opacity:1; transform:translate(-50%,-50%) scale(1);} }
-@keyframes fadeOutScale { 0% { opacity:1; transform:translate(-50%,-50%) scale(1);} 100% { opacity:0; transform:translate(-50%,-50%) scale(0.8);} }
-@keyframes colorFlow { 0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%} }
+/* Новости */
+.news-item {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+}
+
+/* FAQ */
+.faq { display: none; }
+#home .faq { display: block; margin-top: 40px; }
