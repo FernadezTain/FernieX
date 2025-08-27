@@ -150,3 +150,6 @@ if (showCommandsBtn) {
     window.open('http://fogames.tilda.ws/developind', '_self'); // ссылка откроется в этом же окне
   });
 }
+  // Запуск анимации возраста
+  animateAgeCounter();
+}
