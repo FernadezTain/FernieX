@@ -1,45 +1,61 @@
-.menu-section { 
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease;
+.bottom-menu {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  min-width: 280px;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  z-index: 1000;
+  box-shadow: 0 -5px 25px rgba(0,0,0,0.5);
+}
+
+.bottom-menu .menu-btn {
+  background: linear-gradient(270deg, #ff7f00, #ff0000, #ff7f00);
+  background-size: 400% 400%;
   color: white;
-  padding: 0 20px;
-  min-height: calc(100vh - 100px);
-}
-.menu-section.visible { display: flex; opacity: 1; pointer-events: auto; }
-
-#home { gap: 20px; }
-
-#home h1, #home p {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease-out;
-}
-
-/* Исправлено: кнопка Telegram */
-#home #telegram-button {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease-out;
-}
-#home #telegram-button.show {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1em;
+  text-align: center;
+  flex: 1;
+  min-width: 0;
+  transition: transform 0.2s, box-shadow 0.3s, background 0.3s;
+  animation: buttonGlow 8s ease infinite;
 }
 
-/* Новости */
-.news-item {
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 15px 20px;
-  margin-bottom: 15px;
+.bottom-menu .menu-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px 5px #ffeb3b;
 }
 
-/* FAQ */
-.faq { display: none; }
-#home .faq { display: block; margin-top: 40px; }
+.bottom-menu .menu-btn.active {
+  background: linear-gradient(270deg, #ffff00, #ffcc00, #ffff00);
+  transform: scale(1.1);
+  box-shadow: 0 0 25px 8px #ffeb3b;
+}
+
+@media (max-width: 480px) {
+  .bottom-menu {
+    left: 0;
+    transform: none;
+    width: 100%;
+    justify-content: space-between;
+    padding: 6px;
+    gap: 6px;
+    box-sizing: border-box;
+  }
+
+  .bottom-menu .menu-btn {
+    flex: 1;
+    padding: 8px 10px;
+    font-size: 0.85em;
+    border-radius: 8px;
+  }
+}
