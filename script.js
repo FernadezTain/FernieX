@@ -48,7 +48,7 @@ function animateHomeSection() {
   const homeText = document.querySelectorAll('#home h1, #home p');
   const telegramBtn = document.getElementById('telegram-button');
   const faqBlock = document.querySelectorAll('#home .faq');
-  const ageBlock = document.querySelectorAll('#home .age-block'); // блок с таймером
+  const ageBlock = document.querySelectorAll('#home .bot-age-block'); // исправлено
 
   // Текст и кнопка
   homeText.forEach((el, i) => {
