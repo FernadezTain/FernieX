@@ -48,6 +48,7 @@ function animateHomeSection() {
   const homeText = document.querySelectorAll('#home h1, #home p');
   const telegramBtn = document.getElementById('telegram-button');
   const faqBlock = document.querySelectorAll('#home .faq');
+  const ageBlock = document.querySelectorAll('#home .age-block'); // блок с таймером
 
   // Текст и кнопка
   homeText.forEach((el, i) => {
@@ -74,6 +75,17 @@ function animateHomeSection() {
   faqBlock.forEach((item, i) => {
     item.classList.remove('show');
     setTimeout(() => item.classList.add('show'), i * 100);
+  });
+
+  // Анимация блока возраста бота
+  ageBlock.forEach((item, i) => {
+    item.style.opacity = '0';
+    item.style.transform = 'translateY(20px)';
+    setTimeout(() => {
+      item.style.transition = 'all 0.5s ease-out';
+      item.style.opacity = '1';
+      item.style.transform = 'translateY(0)';
+    }, 400); // после текста и кнопки
   });
 }
 
