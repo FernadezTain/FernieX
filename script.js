@@ -1,9 +1,11 @@
 // === Переключение темы ===
 const themeBtn = document.getElementById('theme-toggle-btn');
-themeBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark-theme');
-  document.body.classList.toggle('light-theme');
-});
+if (themeBtn) {
+  themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme');
+    document.body.classList.toggle('light-theme');
+  });
+}
 
 // === Нижнее меню ===
 const menuButtons = document.querySelectorAll('.bottom-menu .menu-btn');
@@ -17,14 +19,14 @@ menuButtons.forEach(btn => {
 
     // Показать нужную секцию и запустить анимацию
     sections.forEach(sec => {
-      if(sec.id === btn.dataset.section){
+      if (sec.id === btn.dataset.section) {
         sec.classList.add('visible');
 
         // Запуск анимаций для каждой секции
-        if(sec.id === 'home') animateHomeSection();
-        if(sec.id === 'news') animateNewsSection();
-        if(sec.id === 'tech') animateTechSection();
-        if(sec.id === 'faq') animateFaqSection(); // добавлено
+        if (sec.id === 'home') animateHomeSection();
+        if (sec.id === 'news') animateItems('#news .news-item', 100);
+        if (sec.id === 'tech') animateItems('#tech .tech-block', 150);
+        if (sec.id === 'faq') animateItems('#faq .faq', 100);
       } else {
         sec.classList.remove('visible');
       }
@@ -32,6 +34,16 @@ menuButtons.forEach(btn => {
   });
 });
 
+// === Универсальная анимация элементов ===
+function animateItems(selector, delay = 100) {
+  const items = document.querySelectorAll(selector);
+  items.forEach((item, i) => {
+    item.classList.remove('show');
+    setTimeout(() => item.classList.add('show'), i * delay);
+  });
+}
+
+// === Анимация главной секции ===
 function animateHomeSection() {
   const homeText = document.querySelectorAll('#home h1, #home p');
   const telegramBtn = document.getElementById('telegram-button');
@@ -58,36 +70,28 @@ function animateHomeSection() {
     }, 200);
   }
 
-  // FAQ
+  // FAQ блоки
   faqBlock.forEach((item, i) => {
     item.classList.remove('show');
     setTimeout(() => item.classList.add('show'), i * 100);
   });
 }
 
-// === Анимация новостей ===
-function animateNewsSection() {
-  const newsItems = document.querySelectorAll('#news .news-item');
-  newsItems.forEach((item, i) => {
-    item.classList.remove('show'); // сброс
-    setTimeout(() => item.classList.add('show'), i * 100);
-  });
-}
-
 // === Функция для расчёта возраста ===
 function calculateBotAge() {
-  const startDate = new Date(2025, 1, 20); // 20.02.2025 (месяцы с 0)
+  const startDate = new Date(2025, 1, 20); // 20.02.2025 (месяцы начинаются с 0)
   const now = new Date();
+
   let years = now.getFullYear() - startDate.getFullYear();
   let months = now.getMonth() - startDate.getMonth();
   let days = now.getDate() - startDate.getDate();
 
   if (days < 0) {
-    months -= 1;
+    months--;
     days += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
   }
   if (months < 0) {
-    years -= 1;
+    years--;
     months += 12;
   }
 
@@ -104,7 +108,7 @@ function animateAgeCounter() {
   const steps = Math.floor(duration / 30);
   let step = 0;
 
-  clearInterval(botAgeElement.animationInterval); // очистка старого интервала
+  clearInterval(botAgeElement.animationInterval);
   botAgeElement.animationInterval = setInterval(() => {
     step++;
     const progress = step / steps;
@@ -122,34 +126,16 @@ function animateAgeCounter() {
   }, 30);
 }
 
-// === Анимация Технической информации ===
-function animateTechSection() {
-  const techBlocks = document.querySelectorAll('#tech .tech-block');
-  techBlocks.forEach((block, i) => {
-    block.classList.remove('show'); // сброс на случай повторного открытия
-    setTimeout(() => block.classList.add('show'), i * 150); // плавная поочередная анимация
-  });
-}
-
-// === Анимация FAQ ===
-function animateFaqSection() {
-  const faqItems = document.querySelectorAll('#faq .faq');
-  faqItems.forEach((item, i) => {
-    item.classList.remove('show'); // сброс
-    setTimeout(() => item.classList.add('show'), i * 100);
-  });
-}
-
-// === Стартовая анимация главной секции ===
-window.addEventListener('load', () => animateHomeSection());
+// === Стартовая анимация при загрузке ===
+window.addEventListener('load', () => {
+  animateHomeSection();
+  animateAgeCounter();
+});
 
 // === Кнопка "Команды Бота" ===
 const showCommandsBtn = document.getElementById('showCommandsBtn');
 if (showCommandsBtn) {
   showCommandsBtn.addEventListener('click', () => {
-    window.open('http://fogames.tilda.ws/developind', '_self'); // ссылка откроется в этом же окне
+    window.open('http://fogames.tilda.ws/developind', '_self');
   });
-}
-  // Запуск анимации возраста
-  animateAgeCounter();
 }
