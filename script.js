@@ -89,19 +89,39 @@ function animateHomeSection() {
   });
 }
 
-// === Счётчик возраста (каждую секунду) ===
+// === Счётчик возраста (год.месяц.дни.часы.минуты.секунды) ===
 function updateBotAge() {
   const createdDate = new Date("2025-02-20T00:00:00");
   const now = new Date();
-  const diff = now - createdDate;
+  let diff = now - createdDate; // разница в миллисекундах
 
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const msInSecond = 1000;
+  const msInMinute = msInSecond * 60;
+  const msInHour = msInMinute * 60;
+  const msInDay = msInHour * 24;
+  const msInMonth = msInDay * 30; // приблизительно
+  const msInYear = msInDay * 365; // приблизительно
+
+  const years = Math.floor(diff / msInYear);
+  diff -= years * msInYear;
+
+  const months = Math.floor(diff / msInMonth);
+  diff -= months * msInMonth;
+
+  const days = Math.floor(diff / msInDay);
+  diff -= days * msInDay;
+
+  const hours = Math.floor(diff / msInHour);
+  diff -= hours * msInHour;
+
+  const minutes = Math.floor(diff / msInMinute);
+  diff -= minutes * msInMinute;
+
+  const seconds = Math.floor(diff / msInSecond);
 
   const botAgeElement = document.getElementById('bot-age');
   if (botAgeElement) {
-    botAgeElement.textContent = `${days}д ${hours}ч ${minutes}м`;
+    botAgeElement.textContent = `${years}г.${months}м.${days}д.${hours}ч.${minutes}м.${seconds}с`;
   }
 }
 
