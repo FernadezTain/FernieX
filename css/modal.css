@@ -65,10 +65,9 @@
   box-shadow: 0 0 20px yellow,0 0 30px rgba(0,200,83,0.8);
 }
 
-/* 📱 Адаптивность */
 @media (max-width: 480px) {
   #restore-account-btn {
-    bottom: 70px; /* выше меню */
+    bottom: 70px; 
     right: 10px;
     font-size: 0.9rem;
     padding: 8px 12px;
