@@ -12,21 +12,23 @@
 }
 .menu-section.visible { display: flex; opacity: 1; pointer-events: auto; }
 
-/* Центрируем контент главной секции */
 #home { gap: 20px; }
 
-/* Анимация текста */
 #home h1, #home p {
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.6s ease-out;
 }
 
-/* Кнопка Telegram */
+/* Исправлено: кнопка Telegram */
 #home #telegram-button {
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.6s ease-out;
+}
+#home #telegram-button.show {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 /* Новости */
@@ -37,10 +39,7 @@
   padding: 15px 20px;
   margin-bottom: 15px;
 }
-.news-item h3 { margin: 0 0 5px; }
-.news-item p { margin: 0 0 8px; }
-.news-item span { font-size: 0.85em; color: #ffcc00; }
 
-/* FAQ только на главной */
+/* FAQ */
 .faq { display: none; }
 #home .faq { display: block; margin-top: 40px; }
