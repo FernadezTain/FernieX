@@ -55,13 +55,12 @@ p {
   transform: translateY(10px);
   transition: all 0.3s ease;
 
-  /* Стеклянная рамка и тень в светлой теме */
   border: 1px solid rgba(255,255,255,0.2);
   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
 body.light-theme .faq {
-  background: rgba(255, 255, 255, 0.95); /* почти белый фон для светлой темы */
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(6px);
   border: 1px solid rgba(0,0,0,0.1);
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
@@ -100,11 +99,10 @@ body.light-theme .faq {
   cursor: pointer;
 }
 
-
 /* Светлая тема: заголовки блоков читаемые */
 body.light-theme #news h2,
 body.light-theme #tech h2 {
-  color: #111; /* тёмно-серый для читаемости */
+  color: #111;
 }
 
 /* Новости */
@@ -116,38 +114,24 @@ body.light-theme #tech h2 {
   margin-bottom: 15px;
   opacity: 0;
   transform: translateY(10px);
-
   width: 1100px;
   max-width: 100%;
   box-sizing: border-box;
-
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
-.news-item h3 {
-  margin: 0 0 5px;
-}
-
-.news-item p {
-  margin: 0 0 8px;
-}
-
-.news-item span {
-  font-size: 0.85em;
-  color: #ffcc00;
-}
+.news-item h3 { margin: 0 0 5px; }
+.news-item p { margin: 0 0 8px; }
+.news-item span { font-size: 0.85em; color: #ffcc00; }
 
 .news-item.show {
   animation: newsFadeIn 0.3s ease forwards;
 }
 
 @keyframes newsFadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* === Техническая информация с анимацией появления === */
@@ -160,22 +144,13 @@ body.light-theme #tech h2 {
   width: 700px;
   max-width: 100%;
   box-sizing: border-box;
-
-  /* Анимация появления */
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.5s ease;
 }
 
-.tech-block.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.tech-block p {
-  margin: 8px 0;
-  color: #ccc;
-}
+.tech-block.show { opacity: 1; transform: translateY(0); }
+.tech-block p { margin: 8px 0; color: #ccc; }
 
 /* === Кнопки === */
 .button-block button {
@@ -206,101 +181,24 @@ body.light-theme #tech h2 {
 /* === Светлая тема: блоки заметны на белом фоне === */
 body.light-theme .news-item,
 body.light-theme .tech-block {
-  background: rgba(255, 255, 255, 0.95); /* чуть прозрачный белый */
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(6px);
   border-radius: 20px;
-  border: 1px solid rgba(0,0,0,0.1); /* тонкая граница */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* лёгкая тень */
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
 body.light-theme .news-item h3,
-body.light-theme .tech-block p {
-  color: #111;
-}
-
+body.light-theme .tech-block p { color: #111; }
 body.light-theme .news-item p,
-body.light-theme .news-item span {
-  color: #222;
-}
-
-body.light-theme .button-block button {
-  color: white;
-}
-
+body.light-theme .news-item span { color: #222; }
+body.light-theme .button-block button { color: white; }
 
 /* === Адаптивность === */
-@media (max-width: 768px) {
-  .news-item, .tech-block {
-    width: 90%;
-  }
-}
-
+@media (max-width: 768px) { .news-item, .tech-block { width: 90%; } }
 @media (max-width: 480px) {
-  .news-item, .tech-block {
-    width: 95%;
-    padding: 15px;
-  }
-
-  .button-block button {
-    font-size: 1em;
-    padding: 10px 0;
-  }
-}
-
-/* === Команды и обновления === */
-.command-section, .update-section {
-  margin-top: 40px;
-  padding: 20px;
-  background-color: rgba(0,0,0,0.75);
-  border-radius: 10px;
-  opacity: 0;
-  transform: scale(0.8);
-  max-height: 0;
-  overflow-y: hidden;
-  transition: all 0.8s ease;
-}
-
-.command-section.visible, .update-section.visible {
-  opacity: 1;
-  transform: scale(1);
-  max-height: 1000px;
-  height: auto;
-  overflow-y: auto;
-}
-
-.command-section h3, .update-section h3 { color: #ffcc00; }
-.command-section ul, .update-section ul {
-  list-style-type: none;
-  padding: 0;
-  font-size: 1.1em;
-  color: #ccc;
-}
-.command-section li, .update-section li {
-  padding: 6px 0;
-  border-bottom: 1px solid #333;
-}
-.command-section li:hover, .update-section li:hover { color: #ff0080; }
-
-/* === Анимации === */
-@keyframes shimmer {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* === Адаптивность === */
-@media (max-width: 768px) {
-  body { padding: 10px; }
-  h1 { font-size: 2em; }
-  p { font-size: 1.1em; }
-}
-@media (max-width: 480px) {
-  h1 { font-size: 1.6em; }
-  p { font-size: 0.95em; line-height: 1.4; }
-  .faq, .command-section, .update-section {
-    padding: 15px;
-    font-size: 0.95em;
-  }
+  .news-item, .tech-block { width: 95%; padding: 15px; }
+  .button-block button { font-size: 1em; padding: 10px 0; }
 }
 
 /* === Футер === */
@@ -310,7 +208,6 @@ body.light-theme .button-block button {
   background: none;
   box-shadow: none;
   font-size: 0.8em;
-  backdrop-filter: none;
 }
 body.dark-theme .footer { color: white; }
 body.light-theme .footer { color: #111; }
@@ -319,41 +216,71 @@ body.dark-theme .footer a { color: #ffcc00; }
 body.light-theme .footer a { color: #0077cc; }
 .footer a:hover { text-decoration: underline; }
 
-/* === Плашка возраста бота === */
+/* === Плашка возраста бота (новый стиль) === */
 .bot-age-block {
   text-align: center;
   background: linear-gradient(135deg, #6a00ff, #ff0080);
   color: white;
   font-size: 18px;
   font-weight: bold;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  padding: 25px 20px;
+  border-radius: 25px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.35);
   animation: fadeIn 1.2s ease forwards;
   letter-spacing: 1px;
+  max-width: 400px;
+  width: 90%;
+  margin: 30px auto;
+  transition: all 0.5s ease;
+  backdrop-filter: blur(5px);
 }
 
 .bot-age-block .age-header {
-  font-size: 20px;
-  margin-bottom: 8px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #ffe066;
 }
 
 .bot-age-block .age-counter {
-  font-size: 30px;
-  font-weight: bold;
-  margin-bottom: 5px;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  background: rgba(255,255,255,0.15);
+  padding: 10px 20px;
+  border-radius: 15px;
+  display: inline-block;
+  letter-spacing: 1px;
+  transition: background 0.3s ease;
+}
+
+.bot-age-block .age-counter span {
+  display: inline-block;
+  min-width: 40px;
+  transition: all 0.3s ease;
 }
 
 .bot-age-block .age-created {
   font-size: 14px;
   opacity: 0.8;
+  margin-top: 5px;
+}
+
+/* Hover эффект для темной темы */
+body.dark-theme .bot-age-block .age-counter:hover {
+  background: rgba(255,255,255,0.25);
 }
 
 /* Светлая тема */
 body.light-theme .bot-age-block {
   background: linear-gradient(135deg, #0077cc, #00cc88);
   color: #fff;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.15);
 }
+
+body.light-theme .bot-age-block .age-header { color: #ffeb3b; }
+body.light-theme .bot-age-block .age-counter { background: rgba(255,255,255,0.25); }
+body.light-theme .bot-age-block .age-counter:hover { background: rgba(255,255,255,0.35); }
 
 /* Анимация появления */
 @keyframes fadeIn {
@@ -361,3 +288,15 @@ body.light-theme .bot-age-block {
   to { opacity: 1; transform: scale(1); }
 }
 
+/* === Адаптивность блока возраста === */
+@media (max-width: 768px) {
+  .bot-age-block { font-size: 16px; padding: 20px; }
+  .bot-age-block .age-header { font-size: 20px; }
+  .bot-age-block .age-counter { font-size: 28px; min-width: 30px; }
+}
+
+@media (max-width: 480px) {
+  .bot-age-block { padding: 18px; }
+  .bot-age-block .age-header { font-size: 18px; }
+  .bot-age-block .age-counter { font-size: 24px; min-width: 25px; }
+}
