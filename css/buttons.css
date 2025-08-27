@@ -24,7 +24,6 @@
   box-shadow: 0 0 25px rgba(255, 0, 0, 0.7);
   z-index: 1000;
 }
-
 #theme-toggle-btn:hover { transform: scale(1.05); box-shadow: 0 0 35px rgba(255,0,0,0.9); }
 #theme-toggle-btn:active { transform: scale(0.95); }
 
@@ -38,6 +37,7 @@
   margin-top: 20px;
   flex-shrink: 0;
 }
+#telegram-button.show { opacity: 1 !important; transform: translateY(0) !important; }
 
 #telegram-button:hover,
 #toggle-commands:hover,
@@ -45,12 +45,9 @@
   box-shadow: 0 0 20px 5px yellow;
   transform: scale(1.05);
 }
-
 #telegram-button:active,
 #toggle-commands:active,
-#toggle-update:active {
-  transform: scale(0.95);
-}
+#toggle-update:active { transform: scale(0.95); }
 
 /* === Анимации === */
 @keyframes colorShift { 0% {background-position:0% 50%;} 50% {background-position:100% 50%;} 100% {background-position:0% 50%;} }
@@ -88,26 +85,9 @@
   transition: transform 0.2s, box-shadow 0.3s, background 0.3s;
   animation: buttonGlow 8s ease infinite;
 }
+.bottom-menu .menu-btn:hover { transform: scale(1.05); box-shadow: 0 0 15px 5px #ffeb3b; }
+.bottom-menu .menu-btn.active { background: linear-gradient(270deg, #ffff00, #ffcc00, #ffff00); transform: scale(1.1); box-shadow: 0 0 25px 8px #ffeb3b; }
 
-.bottom-menu .menu-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px 5px #ffeb3b;
-}
-
-.bottom-menu .menu-btn.active {
-  background: linear-gradient(270deg, #ffff00, #ffcc00, #ffff00);
-  transform: scale(1.1);
-  box-shadow: 0 0 25px 8px #ffeb3b;
-}
-
-/* === Анимации меню === */
-@keyframes slideUp { 0% {transform:translateX(-50%) translateY(100px); opacity:0;} 100% {transform:translateX(-50%) translateY(0); opacity:1;} }
-@keyframes slideButtonUp { 0% {transform:translateY(30px); opacity:0;} 100% {transform:translateY(0); opacity:1;} }
-
-/* === Отступ для контента === */
-body { padding-bottom: 100px; }
-
-/* === Мобильные стили === */
 @media (max-width: 480px) {
   #theme-toggle-btn,
   #telegram-button,
@@ -118,18 +98,6 @@ body { padding-bottom: 100px; }
     font-size: 0.85em;
     border-radius: 8px;
   }
-
-  .bottom-menu {
-    left: 0;
-    transform: none;
-    width: 100%;
-    justify-content: space-between;
-    padding: 6px;
-    gap: 6px;
-    box-sizing: border-box;
-  }
-
-  .bottom-menu .menu-btn {
-    flex: 1;
-  }
+  .bottom-menu { left: 0; transform: none; width: 100%; justify-content: space-between; padding: 6px; gap: 6px; box-sizing: border-box; }
+  .bottom-menu .menu-btn { flex: 1; }
 }
