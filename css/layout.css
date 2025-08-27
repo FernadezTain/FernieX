@@ -318,3 +318,46 @@ body.light-theme .footer { color: #111; }
 body.dark-theme .footer a { color: #ffcc00; }
 body.light-theme .footer a { color: #0077cc; }
 .footer a:hover { text-decoration: underline; }
+
+/* === Плашка возраста бота === */
+.bot-age-block {
+  text-align: center;
+  background: linear-gradient(135deg, #6a00ff, #ff0080);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  animation: fadeIn 1.2s ease forwards;
+  letter-spacing: 1px;
+}
+
+.bot-age-block .age-header {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.bot-age-block .age-counter {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.bot-age-block .age-created {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Светлая тема */
+body.light-theme .bot-age-block {
+  background: linear-gradient(135deg, #0077cc, #00cc88);
+  color: #fff;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
