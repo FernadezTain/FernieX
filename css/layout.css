@@ -216,82 +216,62 @@ body.dark-theme .footer a { color: #ffcc00; }
 body.light-theme .footer a { color: #0077cc; }
 .footer a:hover { text-decoration: underline; }
 
-/* === Подключение красивого шрифта === */
+/* === Подключаем красивый шрифт === */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-/* === Блок возраста бота (обновлённый стиль) === */
+/* === Блок возраста бота === */
 .bot-age-block {
-  font-family: 'Poppins', sans-serif !important;
-  text-align: center !important;
-  background: linear-gradient(135deg, #6a00ff, #ff0080) !important;
-  color: white !important;
-  font-size: 18px !important;
-  font-weight: 600 !important;
-  padding: 25px 20px !important;
-  border-radius: 30px !important;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.35) !important;
-  animation: fadeIn 1.2s ease forwards !important;
-  letter-spacing: 1.2px !important;
-  max-width: 420px !important;
-  width: 90% !important;
-  margin: 30px auto !important;
-  transition: all 0.5s ease, transform 0.3s ease !important;
-  backdrop-filter: blur(6px) !important;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  background: linear-gradient(135deg, #6a00ff, #ff0080);
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 25px 20px;
+  border-radius: 30px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+  animation: fadeIn 1.2s ease forwards;
+  letter-spacing: 1.2px;
+  max-width: 420px;
+  width: 90%;
+  margin: 30px auto;
+  transition: all 0.5s ease, transform 0.3s ease;
+  backdrop-filter: blur(6px);
 }
 
 .bot-age-block .age-header {
-  font-size: 24px !important;
-  font-weight: 700 !important;
-  margin-bottom: 15px !important;
-  color: #ffe066 !important;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.3) !important;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #ffe066;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
 .bot-age-block .age-counter {
-  font-size: 38px !important;
-  font-weight: 700 !important;
-  margin-bottom: 10px !important;
-  background: rgba(255,255,255,0.15) !important;
-  padding: 12px 25px !important;
-  border-radius: 18px !important;
-  display: inline-block !important;
-  letter-spacing: 1.2px !important;
-  transition: background 0.3s ease, transform 0.2s ease !important;
-  box-shadow: inset 0 0 10px rgba(255,255,255,0.2) !important;
-  color: #fff !important;
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background: rgba(255,255,255,0.15);
+  padding: 12px 25px;
+  border-radius: 18px;
+  display: inline-block;
+  letter-spacing: 1.2px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: inset 0 0 10px rgba(255,255,255,0.2);
+  color: #fff;
 }
 
-body.light-theme .bot-age-block {
-  background: linear-gradient(135deg, #0077cc, #00cc88) !important;
-  color: #111 !important;
+.bot-age-block .age-created {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-top: 5px;
 }
 
-body.light-theme .bot-age-block .age-counter {
-  background: rgba(255,255,255,0.25) !important;
-  color: #111 !important;
-}
-
-/* Hover эффект для счётчика */
-body.dark-theme .bot-age-block .age-counter:hover {
-  background: rgba(255,255,255,0.25);
-  transform: scale(1.05);
-}
-
-body.light-theme .bot-age-block .age-counter:hover {
-  background: rgba(0,0,0,0.1);
-  transform: scale(1.05);
-}
-
-/* === Светлая тема === */
+/* Светлая тема */
 body.light-theme .bot-age-block {
   background: linear-gradient(135deg, #0077cc, #00cc88);
   color: #111;
   box-shadow: 0 6px 25px rgba(0,0,0,0.15);
-}
-
-body.light-theme .bot-age-block .age-header {
-  color: #ffeb3b;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
 
 body.light-theme .bot-age-block .age-counter {
@@ -300,25 +280,34 @@ body.light-theme .bot-age-block .age-counter {
   box-shadow: inset 0 0 8px rgba(0,0,0,0.15);
 }
 
-body.light-theme .bot-age-block .age-counter span {
-  color: #111;
+body.light-theme .bot-age-block .age-header {
+  color: #ffeb3b;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
 
-/* === Анимация появления === */
+/* Hover эффект для тёмной темы */
+body.dark-theme .bot-age-block .age-counter:hover,
+body.light-theme .bot-age-block .age-counter:hover {
+  transform: scale(1.05);
+  background: rgba(255,255,255,0.25);
+}
+
+/* Анимация появления */
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.9); }
   to { opacity: 1; transform: scale(1); }
 }
 
-/* === Адаптивность === */
+/* Адаптивность */
 @media (max-width: 768px) {
   .bot-age-block { font-size: 16px; padding: 22px; }
   .bot-age-block .age-header { font-size: 22px; }
-  .bot-age-block .age-counter { font-size: 32px; min-width: 35px; padding: 10px 20px; }
+  .bot-age-block .age-counter { font-size: 32px; padding: 10px 20px; }
 }
 
 @media (max-width: 480px) {
   .bot-age-block { padding: 18px; }
   .bot-age-block .age-header { font-size: 20px; }
-  .bot-age-block .age-counter { font-size: 26px; min-width: 30px; padding: 8px 15px; }
+  .bot-age-block .age-counter { font-size: 26px; padding: 8px 15px; }
 }
+
