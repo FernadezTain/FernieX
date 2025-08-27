@@ -77,59 +77,28 @@ function animateHomeSection() {
   });
 }
 
-// === Функция для расчёта возраста ===
-function calculateBotAge() {
-  const startDate = new Date(2025, 1, 20); // 20.02.2025 (месяцы начинаются с 0)
+// === Счётчик возраста (каждую секунду) ===
+function updateBotAge() {
+  const createdDate = new Date("2025-02-20T00:00:00");
   const now = new Date();
+  const diff = now - createdDate;
 
-  let years = now.getFullYear() - startDate.getFullYear();
-  let months = now.getMonth() - startDate.getMonth();
-  let days = now.getDate() - startDate.getDate();
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
 
-  if (days < 0) {
-    months--;
-    days += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
-  }
-  if (months < 0) {
-    years--;
-    months += 12;
-  }
-
-  return { years, months, days };
-}
-
-// === Анимация возраста ===
-function animateAgeCounter() {
   const botAgeElement = document.getElementById('bot-age');
-  if (!botAgeElement) return;
-
-  const age = calculateBotAge();
-  const duration = 2000;
-  const steps = Math.floor(duration / 30);
-  let step = 0;
-
-  clearInterval(botAgeElement.animationInterval);
-  botAgeElement.animationInterval = setInterval(() => {
-    step++;
-    const progress = step / steps;
-
-    const years = Math.floor(age.years * progress);
-    const months = Math.floor(age.months * progress);
-    const days = Math.floor(age.days * progress);
-
-    botAgeElement.textContent = `${years}.${months}.${days}`;
-
-    if (step >= steps) {
-      botAgeElement.textContent = `${age.years}.${age.months}.${age.days}`;
-      clearInterval(botAgeElement.animationInterval);
-    }
-  }, 30);
+  if (botAgeElement) {
+    botAgeElement.textContent = `${days}д ${hours}ч ${minutes}м`;
+  }
 }
+
+setInterval(updateBotAge, 1000); // обновляем каждую секунду
+updateBotAge(); // сразу обновляем при загрузке
 
 // === Стартовая анимация при загрузке ===
 window.addEventListener('load', () => {
   animateHomeSection();
-  animateAgeCounter();
 });
 
 // === Кнопка "Команды Бота" ===
