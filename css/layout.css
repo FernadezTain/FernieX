@@ -274,13 +274,23 @@ body.dark-theme .bot-age-block .age-counter:hover {
 /* Светлая тема */
 body.light-theme .bot-age-block {
   background: linear-gradient(135deg, #0077cc, #00cc88);
-  color: #fff;
+  color: #111; /* теперь текст будет тёмным */
   box-shadow: 0 6px 25px rgba(0,0,0,0.15);
 }
 
-body.light-theme .bot-age-block .age-header { color: #ffeb3b; }
-body.light-theme .bot-age-block .age-counter { background: rgba(255,255,255,0.25); }
-body.light-theme .bot-age-block .age-counter:hover { background: rgba(255,255,255,0.35); }
+body.light-theme .bot-age-block .age-header {
+  color: #ffeb3b; /* желтый заголовок */
+}
+
+body.light-theme .bot-age-block .age-counter {
+  background: rgba(255,255,255,0.25);
+  color: #111; /* текст внутри счётчика */
+}
+
+body.light-theme .bot-age-block .age-counter span {
+  color: #111; /* текст цифр */
+}
+
 
 /* Анимация появления */
 @keyframes fadeIn {
