@@ -102,13 +102,14 @@
   .bottom-menu .menu-btn { flex: 1; }
 }
 
-/* Стиль кнопки "Стать админом" */
+/* Контейнер кнопки */
 .become-admin-container {
   display: flex;
   justify-content: center;
   margin: 20px 0;
 }
 
+/* Кнопка "Стать админом" с анимацией появления */
 .become-admin-btn {
   background: linear-gradient(90deg, #00ffff, #ff00ff);
   color: #fff;
@@ -118,8 +119,11 @@
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
 }
 
 .become-admin-btn:hover {
@@ -130,4 +134,69 @@
 .become-admin-btn:active {
   transform: scale(0.95);
 }
+
+/* Анимация появления кнопки */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Модальное окно */
+.modal {
+  display: none; /* скрыто по умолчанию */
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #0d0d0d;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  color: #fff;
+  max-width: 90%;
+  animation: modalPop 0.3s ease-out;
+  box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
+}
+
+@keyframes modalPop {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-buttons button {
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.modal-buttons button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+}
+
+#modalGoBtn {
+  background: linear-gradient(90deg, #00ffff, #ff00ff);
+  color: #fff;
+}
+
+#modalStayBtn {
+  background: #333;
+  color: #fff;
+}
+
 
