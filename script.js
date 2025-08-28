@@ -140,3 +140,40 @@ if (showCommandsBtn) {
     window.open('http://fogames.tilda.ws/developind', '_self');
   });
 }
+// === Кнопка "Стать админом" ===
+const becomeAdminBtn = document.getElementById('becomeAdminBtn');
+const adminModal = document.getElementById('adminModal');
+const modalGoBtn = document.getElementById('modalGoBtn');
+const modalStayBtn = document.getElementById('modalStayBtn');
+
+if (becomeAdminBtn) {
+  becomeAdminBtn.addEventListener('click', () => {
+    adminModal.style.display = 'flex';
+  });
+}
+
+// Кнопка "Перейти"
+if (modalGoBtn) {
+  modalGoBtn.addEventListener('click', () => {
+    const link = becomeAdminBtn.getAttribute('data-link'); // ссылка должна быть в data-link
+    window.open(link, '_blank'); // открывает ссылку в новой вкладке
+    adminModal.style.display = 'none';
+  });
+}
+
+// Кнопка "Остаться"
+if (modalStayBtn) {
+  modalStayBtn.addEventListener('click', () => {
+    adminModal.style.display = 'none';
+  });
+}
+
+// Закрытие модалки при клике вне содержимого
+if (adminModal) {
+  adminModal.addEventListener('click', (e) => {
+    if (e.target === adminModal) {
+      adminModal.style.display = 'none';
+    }
+  });
+}
+
