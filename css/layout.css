@@ -324,3 +324,35 @@ body.light-theme .bot-age-block .age-counter:hover {
   .bot-age-block .age-counter { font-size: 26px; padding: 8px 15px; }
 }
 
+.bottom-menu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1a1a1a;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  z-index: 1000;
+  border-top: 1px solid #333;
+}
+
+/* отступ под футер, чтобы текст был выше нижнего меню */
+.footer {
+  text-align: center;
+  font-size: 0.9em;
+  color: #aaa;
+  padding: 15px;
+  line-height: 1.5;
+  margin-bottom: 80px; /* при необходимости меняй величину */
+  background: transparent;
+}
+
+.footer a {
+  color: #00ffff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #ff00ff;
+}
