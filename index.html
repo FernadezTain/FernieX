@@ -27,11 +27,23 @@
   <div class="age-counter" id="bot-age">0.0.0.0.0.0</div>
   <div class="age-created">Создан: 20.02.2025</div>
 </div>
-  <!-- Кнопка "Стать админом" -->
+<!-- Кнопка "Стать админом" -->
 <div class="become-admin-container">
-  <button class="become-admin-btn" onclick="window.location.href='https://t.me/your-admin-link'">
+  <button class="become-admin-btn" id="becomeAdminBtn">
     ⭐ Стать админом ⭐
   </button>
+</div>
+
+<!-- Модальное окно -->
+<div id="adminModal" class="modal">
+  <div class="modal-content">
+    <h2>Вы уверены?</h2>
+    <p>Вы хотите перейти по ссылке и стать администратором?</p>
+    <div class="modal-buttons">
+      <button id="modalGoBtn">Перейти</button>
+      <button id="modalStayBtn">Остаться</button>
+    </div>
+  </div>
 </div>
 
 
