@@ -101,3 +101,33 @@
   .bottom-menu { left: 0; transform: none; width: 100%; justify-content: space-between; padding: 6px; gap: 6px; box-sizing: border-box; }
   .bottom-menu .menu-btn { flex: 1; }
 }
+
+/* Стиль кнопки "Стать админом" */
+.become-admin-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.become-admin-btn {
+  background: linear-gradient(90deg, #00ffff, #ff00ff);
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
+}
+
+.become-admin-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 0, 255, 0.5);
+}
+
+.become-admin-btn:active {
+  transform: scale(0.95);
+}
+
