@@ -6,14 +6,15 @@
   <title>Политика конфиденциальности | FernieX</title>
   <style>
     :root {
-      --bg-color: #0b0b0b;
-      --card-bg: rgba(20, 20, 20, 0.85);
-      --text-color: #eaeaea;
-      --accent: #00ffff;
-      --accent2: #ff00ff;
-      --secondary: #ffea00;
-      --radius: 18px;
-      --shadow: 0 4px 20px rgba(0,0,0,0.6);
+      --bg-color: #0c0c0c;
+      --card-bg: rgba(18, 18, 18, 0.9);
+      --text-color: #e0e0e0;
+      --accent: #00fff7;
+      --accent2: #ff00f7;
+      --secondary: #ffd600;
+      --radius: 22px;
+      --shadow: 0 8px 30px rgba(0,0,0,0.7);
+      --transition: 0.3s ease-in-out;
     }
 
     * {
@@ -24,9 +25,9 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--bg-color);
+      background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
       color: var(--text-color);
-      line-height: 1.7;
+      line-height: 1.8;
       padding: 20px;
       display: flex;
       flex-direction: column;
@@ -35,9 +36,9 @@
 
     .container {
       flex: 1;
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px 35px;
       background: var(--card-bg);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -45,6 +46,11 @@
       background-clip: padding-box;
       position: relative;
       overflow: hidden;
+      transition: transform var(--transition);
+    }
+
+    .container:hover {
+      transform: translateY(-5px);
     }
 
     .container::before {
@@ -54,8 +60,8 @@
       padding: 2px;
       border-radius: var(--radius);
       background: linear-gradient(120deg, var(--accent), var(--accent2), var(--secondary), var(--accent));
-      background-size: 300% 300%;
-      animation: borderGlow 6s linear infinite;
+      background-size: 400% 400%;
+      animation: borderGlow 8s linear infinite;
       z-index: -1;
       mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       mask-composite: exclude;
@@ -70,57 +76,92 @@
 
     h1 {
       text-align: center;
-      font-size: 1.8rem;
-      margin-bottom: 15px;
-      color: var(--accent);
+      font-size: 2rem;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textGlow 2s infinite alternate;
+    }
+
+    @keyframes textGlow {
+      0% { text-shadow: 0 0 5px var(--accent); }
+      100% { text-shadow: 0 0 20px var(--accent2); }
     }
 
     h2 {
-      font-size: 1.3rem;
-      margin: 20px 0 10px;
+      font-size: 1.4rem;
+      margin: 25px 0 12px;
       color: var(--secondary);
+      position: relative;
     }
 
-    p {
+    h2::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+      margin-top: 5px;
+    }
+
+    p, li {
       font-size: 1rem;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       color: #d0f0ff;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: inside disc;
+    }
+
+    a {
+      color: var(--accent2);
+      text-decoration: none;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    a:hover::after {
+      width: 100%;
     }
 
     footer {
       text-align: center;
       font-size: 0.85rem;
       color: #888;
-      padding: 15px 0;
+      padding: 20px 0;
       border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 20px;
+      margin-top: 30px;
     }
 
-    a {
-      color: var(--accent2);
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    a:hover {
-      color: var(--accent);
-    }
-
-    /* Мобильная адаптация */
-    @media (max-width: 600px) {
+    @media (max-width: 650px) {
       body {
-        padding: 10px;
-      }
-      .container {
         padding: 15px;
       }
+      .container {
+        padding: 20px 25px;
+      }
       h1 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
       }
       h2 {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
       }
-      p {
+      p, li {
         font-size: 0.95rem;
       }
     }
@@ -189,9 +230,8 @@
   <p>© 2025 FernieX. Все права защищены.</p>
 </div>
 
-
-  <footer>
-    &copy; 2025 FernieX. Все права защищены.
-  </footer>
+<footer>
+  &copy; 2025 FernieX. Все права защищены.
+</footer>
 </body>
 </html>
