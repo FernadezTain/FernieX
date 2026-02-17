@@ -94,49 +94,43 @@ function updateBotAge() {
   const createdDate = new Date(2025, 1, 20, 0, 0, 0); // 20 февраля 2025
   const now = new Date();
 
-  let tempDate = new Date(createdDate);
+  let temp = new Date(createdDate);
 
-  // === ГОДЫ ===
-  let years = now.getFullYear() - tempDate.getFullYear();
-  tempDate.setFullYear(tempDate.getFullYear() + years);
+  let years = 0;
+  let months = 0;
 
-  if (tempDate > now) {
-    years--;
-    tempDate.setFullYear(tempDate.getFullYear() - 1);
+  // === СЧИТАЕМ ГОДЫ ===
+  while (true) {
+    let next = new Date(temp);
+    next.setFullYear(next.getFullYear() + 1);
+    if (next <= now) {
+      temp = next;
+      years++;
+    } else break;
   }
 
-  // === МЕСЯЦЫ ===
-  let months = now.getMonth() - tempDate.getMonth();
-  if (months < 0) months += 12;
-
-  tempDate.setMonth(tempDate.getMonth() + months);
-
-  if (tempDate > now) {
-    months--;
-    tempDate.setMonth(tempDate.getMonth() - 1);
+  // === СЧИТАЕМ МЕСЯЦЫ ===
+  while (true) {
+    let next = new Date(temp);
+    next.setMonth(next.getMonth() + 1);
+    if (next <= now) {
+      temp = next;
+      months++;
+    } else break;
   }
 
-  // === ДНИ ===
-  let diff = now - tempDate;
+  // === ОСТАТОК ===
+  let diff = now - temp;
 
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  tempDate.setDate(tempDate.getDate() + days);
+  diff -= days * (1000 * 60 * 60 * 24);
 
-  diff = now - tempDate;
-
-  // === ЧАСЫ ===
   const hours = Math.floor(diff / (1000 * 60 * 60));
-  tempDate.setHours(tempDate.getHours() + hours);
+  diff -= hours * (1000 * 60 * 60);
 
-  diff = now - tempDate;
-
-  // === МИНУТЫ ===
   const minutes = Math.floor(diff / (1000 * 60));
-  tempDate.setMinutes(tempDate.getMinutes() + minutes);
+  diff -= minutes * (1000 * 60);
 
-  diff = now - tempDate;
-
-  // === СЕКУНДЫ ===
   const seconds = Math.floor(diff / 1000);
 
   const botAgeElement = document.getElementById('bot-age');
@@ -145,7 +139,6 @@ function updateBotAge() {
       `${years}г.${months}м.${days}д.${hours}ч.${minutes}м.${seconds}с`;
   }
 }
-
 
 setInterval(updateBotAge, 1000);
 updateBotAge();
