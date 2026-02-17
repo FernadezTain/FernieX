@@ -91,48 +91,53 @@ function animateHomeSection() {
 
 // === Счётчик возраста (год.месяц.дни.часы.минуты.секунды) ===
 function updateBotAge() {
-  const createdDate = new Date(2025, 1, 20, 0, 0, 0); 
-  // ВАЖНО: месяц 1 = февраль (в JS месяцы с 0)
-
+  const createdDate = new Date(2025, 1, 20, 0, 0, 0); // 20 февраля 2025
   const now = new Date();
 
-  let years = now.getFullYear() - createdDate.getFullYear();
-  let months = now.getMonth() - createdDate.getMonth();
-  let days = now.getDate() - createdDate.getDate();
-  let hours = now.getHours() - createdDate.getHours();
-  let minutes = now.getMinutes() - createdDate.getMinutes();
-  let seconds = now.getSeconds() - createdDate.getSeconds();
+  let tempDate = new Date(createdDate);
 
-  // Коррекция секунд
-  if (seconds < 0) {
-    seconds += 60;
-    minutes--;
-  }
+  // === ГОДЫ ===
+  let years = now.getFullYear() - tempDate.getFullYear();
+  tempDate.setFullYear(tempDate.getFullYear() + years);
 
-  // Коррекция минут
-  if (minutes < 0) {
-    minutes += 60;
-    hours--;
-  }
-
-  // Коррекция часов
-  if (hours < 0) {
-    hours += 24;
-    days--;
-  }
-
-  // Коррекция дней
-  if (days < 0) {
-    months--;
-    const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
-    days += prevMonth.getDate();
-  }
-
-  // Коррекция месяцев
-  if (months < 0) {
-    months += 12;
+  if (tempDate > now) {
     years--;
+    tempDate.setFullYear(tempDate.getFullYear() - 1);
   }
+
+  // === МЕСЯЦЫ ===
+  let months = now.getMonth() - tempDate.getMonth();
+  if (months < 0) months += 12;
+
+  tempDate.setMonth(tempDate.getMonth() + months);
+
+  if (tempDate > now) {
+    months--;
+    tempDate.setMonth(tempDate.getMonth() - 1);
+  }
+
+  // === ДНИ ===
+  let diff = now - tempDate;
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  tempDate.setDate(tempDate.getDate() + days);
+
+  diff = now - tempDate;
+
+  // === ЧАСЫ ===
+  const hours = Math.floor(diff / (1000 * 60 * 60));
+  tempDate.setHours(tempDate.getHours() + hours);
+
+  diff = now - tempDate;
+
+  // === МИНУТЫ ===
+  const minutes = Math.floor(diff / (1000 * 60));
+  tempDate.setMinutes(tempDate.getMinutes() + minutes);
+
+  diff = now - tempDate;
+
+  // === СЕКУНДЫ ===
+  const seconds = Math.floor(diff / 1000);
 
   const botAgeElement = document.getElementById('bot-age');
   if (botAgeElement) {
@@ -140,6 +145,7 @@ function updateBotAge() {
       `${years}г.${months}м.${days}д.${hours}ч.${minutes}м.${seconds}с`;
   }
 }
+
 
 setInterval(updateBotAge, 1000);
 updateBotAge();
