@@ -141,6 +141,9 @@ function updateBotAge() {
   }
 }
 
+setInterval(updateBotAge, 1000);
+updateBotAge();
+
 
 // === Стартовая анимация при загрузке ===
 window.addEventListener('load', () => {
