@@ -91,42 +91,56 @@ function animateHomeSection() {
 
 // === Счётчик возраста (год.месяц.дни.часы.минуты.секунды) ===
 function updateBotAge() {
-  const createdDate = new Date("2025-02-20T00:00:00");
+  const createdDate = new Date(2025, 1, 20, 0, 0, 0); 
+  // ВАЖНО: месяц 1 = февраль (в JS месяцы с 0)
+
   const now = new Date();
-  let diff = now - createdDate; // разница в миллисекундах
 
-  const msInSecond = 1000;
-  const msInMinute = msInSecond * 60;
-  const msInHour = msInMinute * 60;
-  const msInDay = msInHour * 24;
-  const msInMonth = msInDay * 30; // приблизительно
-  const msInYear = msInDay * 365; // приблизительно
+  let years = now.getFullYear() - createdDate.getFullYear();
+  let months = now.getMonth() - createdDate.getMonth();
+  let days = now.getDate() - createdDate.getDate();
+  let hours = now.getHours() - createdDate.getHours();
+  let minutes = now.getMinutes() - createdDate.getMinutes();
+  let seconds = now.getSeconds() - createdDate.getSeconds();
 
-  const years = Math.floor(diff / msInYear);
-  diff -= years * msInYear;
+  // Коррекция секунд
+  if (seconds < 0) {
+    seconds += 60;
+    minutes--;
+  }
 
-  const months = Math.floor(diff / msInMonth);
-  diff -= months * msInMonth;
+  // Коррекция минут
+  if (minutes < 0) {
+    minutes += 60;
+    hours--;
+  }
 
-  const days = Math.floor(diff / msInDay);
-  diff -= days * msInDay;
+  // Коррекция часов
+  if (hours < 0) {
+    hours += 24;
+    days--;
+  }
 
-  const hours = Math.floor(diff / msInHour);
-  diff -= hours * msInHour;
+  // Коррекция дней
+  if (days < 0) {
+    months--;
+    const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+    days += prevMonth.getDate();
+  }
 
-  const minutes = Math.floor(diff / msInMinute);
-  diff -= minutes * msInMinute;
-
-  const seconds = Math.floor(diff / msInSecond);
+  // Коррекция месяцев
+  if (months < 0) {
+    months += 12;
+    years--;
+  }
 
   const botAgeElement = document.getElementById('bot-age');
   if (botAgeElement) {
-    botAgeElement.textContent = `${years}г.${months}м.${days}д.${hours}ч.${minutes}м.${seconds}с`;
+    botAgeElement.textContent =
+      `${years}г.${months}м.${days}д.${hours}ч.${minutes}м.${seconds}с`;
   }
 }
 
-setInterval(updateBotAge, 1000); // обновляем каждую секунду
-updateBotAge(); // сразу обновляем при загрузке
 
 // === Стартовая анимация при загрузке ===
 window.addEventListener('load', () => {
