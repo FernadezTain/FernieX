@@ -1,237 +1,599 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Условия использования | FernieX</title>
-  <style>
-    :root {
-      --bg-color: #0c0c0c;
-      --card-bg: rgba(18, 18, 18, 0.9);
-      --text-color: #e0e0e0;
-      --accent: #00fff7;
-      --accent2: #ff00f7;
-      --secondary: #ffd600;
-      --radius: 22px;
-      --shadow: 0 8px 30px rgba(0,0,0,0.7);
-      --transition: 0.3s ease-in-out;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
-      color: var(--text-color);
-      line-height: 1.8;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    .container {
-      flex: 1;
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 30px 35px;
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      border: 2px solid transparent;
-      background-clip: padding-box;
-      position: relative;
-      overflow: hidden;
-      transition: transform var(--transition);
-    }
-
-    .container:hover {
-      transform: translateY(-5px);
-    }
-
-    .container::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      padding: 2px;
-      border-radius: var(--radius);
-      background: linear-gradient(120deg, var(--accent), var(--accent2), var(--secondary), var(--accent));
-      background-size: 400% 400%;
-      animation: borderGlow 8s linear infinite;
-      z-index: -1;
-      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      mask-composite: exclude;
-      -webkit-mask-composite: destination-out;
-    }
-
-    @keyframes borderGlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 20px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: textGlow 2s infinite alternate;
-    }
-
-    @keyframes textGlow {
-      0% { text-shadow: 0 0 5px var(--accent); }
-      100% { text-shadow: 0 0 20px var(--accent2); }
-    }
-
-    h2 {
-      font-size: 1.4rem;
-      margin: 25px 0 12px;
-      color: var(--secondary);
-      position: relative;
-    }
-
-    h2::after {
-      content: '';
-      display: block;
-      width: 50px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      border-radius: 2px;
-      margin-top: 5px;
-    }
-
-    p, li {
-      font-size: 1rem;
-      margin-bottom: 12px;
-      color: #d0f0ff;
-    }
-
-    ul {
-      margin-left: 20px;
-      list-style: inside disc;
-    }
-
-    a {
-      color: var(--accent2);
-      text-decoration: none;
-      position: relative;
-      transition: var(--transition);
-    }
-
-    a::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -2px;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.3s ease;
-    }
-
-    a:hover::after {
-      width: 100%;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 0.85rem;
-      color: #888;
-      padding: 20px 0;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 30px;
-    }
-
-    @media (max-width: 650px) {
-      body {
-        padding: 15px;
-      }
-      .container {
-        padding: 20px 25px;
-      }
-      h1 {
-        font-size: 1.6rem;
-      }
-      h2 {
-        font-size: 1.2rem;
-      }
-      p, li {
-        font-size: 0.95rem;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Условия использования | FernieX</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #08090d;
+    --surface: #10121a;
+    --surface2: #191c28;
+    --border: rgba(255,255,255,0.07);
+    --accent: #6d5aff;
+    --accent2: #00d4ff;
+    --gold: #ffd94a;
+    --text: #e8eaf2;
+    --muted: #8b90a8;
+    --danger: #ff4f6a;
+  }
+  body {
+    font-family: 'Onest', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding-bottom: 60px;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+  .hero {
+    position: relative;
+    padding: 70px 40px 50px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 400px;
+    background: radial-gradient(ellipse, rgba(109,90,255,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(109,90,255,0.12);
+    border: 1px solid rgba(109,90,255,0.3);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #a89dff;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero-badge span { width: 7px; height: 7px; background: #6d5aff; border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+  h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #fff 30%, #a89dff 70%, #00d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 16px;
+  }
+  .hero-sub {
+    color: var(--muted);
+    font-size: 0.95rem;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  .meta-chip {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .meta-chip .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); flex-shrink: 0; }
+  .wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+  }
+  .toc-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 6px;
+  }
+  .toc-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .toc-item:hover { background: var(--surface2); color: var(--text); }
+  .toc-num {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent);
+    min-width: 22px;
+  }
+  .section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px 36px;
+    margin-bottom: 16px;
+    transition: border-color 0.3s;
+    animation: fadeUp 0.5s ease both;
+  }
+  .section:hover { border-color: rgba(109,90,255,0.2); }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .section-num {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+    color: var(--accent);
+    background: rgba(109,90,255,0.1);
+    border: 1px solid rgba(109,90,255,0.2);
+    border-radius: 8px;
+    padding: 5px 10px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  h2 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  p { font-size: 0.93rem; color: var(--text); line-height: 1.75; margin-bottom: 12px; font-weight: 300; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: #fff; font-weight: 600; }
+  .law-ref {
+    display: inline-block;
+    background: rgba(255,217,74,0.08);
+    border: 1px solid rgba(255,217,74,0.2);
+    border-radius: 6px;
+    padding: 1px 8px;
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  ul { list-style: none; margin: 10px 0; display: flex; flex-direction: column; gap: 8px; }
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.91rem;
+    color: var(--text);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+  li::before { content: '—'; color: var(--accent2); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .infobox {
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .infobox.blue { background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.15); }
+  .infobox.purple { background: rgba(109,90,255,0.06); border: 1px solid rgba(109,90,255,0.15); }
+  .infobox.gold { background: rgba(255,217,74,0.06); border: 1px solid rgba(255,217,74,0.15); }
+  .infobox.red { background: rgba(255,79,106,0.06); border: 1px solid rgba(255,79,106,0.15); }
+  .infobox-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .infobox p { margin: 0; font-size: 0.88rem; color: var(--muted); }
+  .infobox strong { color: var(--text); }
+  .table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 12px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  thead tr { background: var(--surface2); }
+  th { padding: 12px 16px; text-align: left; color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap; }
+  td { padding: 11px 16px; border-top: 1px solid var(--border); color: var(--text); font-weight: 300; vertical-align: top; line-height: 1.5; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+  .highlight {
+    background: linear-gradient(135deg, rgba(109,90,255,0.08), rgba(0,212,255,0.05));
+    border: 1px solid rgba(109,90,255,0.2);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+  .highlight p { margin: 0; }
+  a { color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(0,212,255,0.3); transition: border-color 0.2s; }
+  a:hover { border-color: var(--accent2); }
+  code {
+    font-family: 'Courier New', monospace;
+    background: rgba(109,90,255,0.1);
+    border: 1px solid rgba(109,90,255,0.2);
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 12px;
+    color: #a89dff;
+  }
+  .sla-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; margin-top: 16px; }
+  .sla-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    text-align: center;
+  }
+  .sla-days {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .sla-label { font-size: 11px; color: var(--muted); font-weight: 500; }
+  footer { text-align: center; padding: 40px 24px 20px; color: var(--muted); font-size: 12px; line-height: 1.8; }
+  footer strong { color: var(--text); }
+  @media (max-width: 600px) {
+    .hero { padding: 50px 20px 36px; }
+    .section { padding: 22px 20px; }
+    h2 { font-size: 0.9rem; }
+  }
+</style>
 </head>
 <body>
-<div class="container">
-  <h1>📜 Условия использования FernieX</h1>
 
-  <h2>1. Общие положения</h2>
-  <p>Эти Условия регулируют порядок использования Telegram-бота <strong>FernieX</strong> и его функций, включая игровые механики, инструменты модерации и информационные сервисы.</p>
-  <p>Продолжая пользоваться ботом, вы подтверждаете согласие с настоящими Условиями.</p>
-  <p><strong>Возрастное ограничение:</strong> использование бота разрешено лицам старше 10 лет.</p>
+<div class="hero">
+  <div class="hero-badge"><span></span> Официальный документ</div>
+  <h1>Условия использования</h1>
+  <p class="hero-sub">Telegram-бот <strong>FernieX</strong> — правила доступа к сервису, права и обязанности пользователей</p>
+  <div class="hero-meta">
+    <span class="meta-chip"><span class="dot"></span>Редакция: 11 апреля 2026 г.</span>
+    <span class="meta-chip"><span class="dot" style="background:#ffd94a"></span>ГК РФ · 149-ФЗ · 152-ФЗ</span>
+    <span class="meta-chip"><span class="dot" style="background:#00ff88"></span>Вступает в силу с момента публикации</span>
+  </div>
+</div>
 
-  <h2>2. Функционал бота</h2>
-  <ul>
-    <li><strong>Игровой функционал:</strong> участие в мини-играх, получение внутриигровых очков, взаимодействие с другими пользователями.</li>
-    <li><strong>Модерация:</strong> ограничение прав, удаление сообщений, предупреждения и блокировки при нарушении правил.</li>
-    <li><strong>Информационные сервисы:</strong> отображение статистики, напоминания и уведомления.</li>
-  </ul>
+<div class="wrapper">
 
-  <h2>3. Ответственность пользователей</h2>
-  <ul>
-    <li>Пользователь обязуется не использовать бота для противоправных целей (ст. 2, 10 Гражданского кодекса РФ: <a href="http://www.consultant.ru/document/cons_doc_LAW_5142/4b2a944e1fcfdd33f59e5c99ad6c5376fa7d139d/">ГК РФ</a>).</li>
-    <li>Администрация не несет ответственности за контент, публикуемый пользователями.</li>
-    <li>Каждый пользователь отвечает за свои действия при взаимодействии с ботом.</li>
-  </ul>
+  <div class="toc">
+    <div class="toc-title">Содержание</div>
+    <div class="toc-grid">
+      <a href="#s1" class="toc-item"><span class="toc-num">01</span>Общие положения</a>
+      <a href="#s2" class="toc-item"><span class="toc-num">02</span>Термины и определения</a>
+      <a href="#s3" class="toc-item"><span class="toc-num">03</span>Функционал бота</a>
+      <a href="#s4" class="toc-item"><span class="toc-num">04</span>Условия доступа</a>
+      <a href="#s5" class="toc-item"><span class="toc-num">05</span>Права и обязанности пользователя</a>
+      <a href="#s6" class="toc-item"><span class="toc-num">06</span>Права и обязанности администрации</a>
+      <a href="#s7" class="toc-item"><span class="toc-num">07</span>Запрещённые действия</a>
+      <a href="#s8" class="toc-item"><span class="toc-num">08</span>Интеллектуальная собственность</a>
+      <a href="#s9" class="toc-item"><span class="toc-num">09</span>Ограничение ответственности</a>
+      <a href="#s10" class="toc-item"><span class="toc-num">10</span>Модерация и санкции</a>
+      <a href="#s11" class="toc-item"><span class="toc-num">11</span>Прекращение использования</a>
+      <a href="#s12" class="toc-item"><span class="toc-num">12</span>Досудебное урегулирование</a>
+      <a href="#s13" class="toc-item"><span class="toc-num">13</span>Применимое право</a>
+      <a href="#s14" class="toc-item"><span class="toc-num">14</span>Изменения условий</a>
+      <a href="#s15" class="toc-item"><span class="toc-num">15</span>Контакты</a>
+    </div>
+  </div>
 
-  <h2>4. Интеллектуальная собственность</h2>
-  <ul>
-    <li>Весь контент, предоставляемый ботом (тексты, графика, игровые механики), является собственностью администрации и защищен авторским правом (ст. 1250-1260 ГК РФ: <a href="http://www.consultant.ru/document/cons_doc_LAW_5142/3d9f2b70e60a9b2ef2ed1db8871f58a1eb091b1f/">ГК РФ</a>).</li>
-    <li>Пользовательский контент (сообщения, изображения, результаты игр) остается собственностью пользователя, однако предоставляется боту <strong>лицензия на использование</strong> в рамках работы сервиса (показ другим пользователям, ведение статистики, модерация).</li>
-  </ul>
+  <!-- 1 -->
+  <div class="section" id="s1">
+    <div class="section-header"><span class="section-num">01</span><h2>Общие положения</h2></div>
+    <p>Настоящие Условия использования (далее — «Условия») регулируют порядок доступа и использования Telegram-бота <strong>FernieX</strong> (далее — «Бот», «Сервис»), включая все его функции: игровые механики, инструменты модерации, информационные и статистические сервисы.</p>
+    <p>Условия заключаются между Пользователем и командой разработчиков FernieX (далее — «Администрация») и являются публичной офертой в соответствии со <span class="law-ref">ст. 437 ГК РФ</span>.</p>
+    <p>Настоящие Условия разработаны в соответствии с требованиями:</p>
+    <ul>
+      <li><span class="law-ref">ГК РФ</span> — Гражданский кодекс Российской Федерации (ч. I, IV);</li>
+      <li><span class="law-ref">149-ФЗ</span> — Федеральный закон «Об информации, информационных технологиях и о защите информации» от 27.07.2006;</li>
+      <li><span class="law-ref">152-ФЗ</span> — Федеральный закон «О персональных данных» от 27.07.2006;</li>
+      <li><span class="law-ref">2300-1</span> — Закон РФ «О защите прав потребителей» от 07.02.1992 (при применимости).</li>
+    </ul>
+    <div class="infobox blue">
+      <span class="infobox-icon">ℹ️</span>
+      <p>Начало использования Бота (отправка любой команды или сообщения) означает <strong>безоговорочное согласие</strong> Пользователя с настоящими Условиями и Политикой конфиденциальности. Если вы не согласны — немедленно прекратите использование Бота.</p>
+    </div>
+  </div>
 
-  <h2>5. Ограничение ответственности</h2>
-  <ul>
-    <li>Бот предоставляется «как есть», без гарантий бесперебойной работы.</li>
-    <li>Администрация не несет ответственности за сбои, потерю данных или блокировки.</li>
-    <li>Решения о муте или бане принимаются автоматически или администраторами чата, и не подлежат обжалованию вне правил сообщества.</li>
-    <li>Администрация не гарантирует точность статистики и корректность работы всех функций.</li>
-  </ul>
+  <!-- 2 -->
+  <div class="section" id="s2">
+    <div class="section-header"><span class="section-num">02</span><h2>Термины и определения</h2></div>
+    <ul>
+      <li><strong>Бот / Сервис</strong> — программный комплекс FernieX, функционирующий в мессенджере Telegram на основании его API.</li>
+      <li><strong>Пользователь</strong> — физическое лицо, использующее Бот через учётную запись Telegram.</li>
+      <li><strong>Администрация</strong> — команда разработчиков и модераторов, осуществляющих управление Ботом.</li>
+      <li><strong>Контент</strong> — любые текстовые, графические, игровые и иные материалы, размещённые в Боте или передаваемые через него.</li>
+      <li><strong>Аккаунт</strong> — совокупность данных, идентифицирующих Пользователя в системе Бота (Telegram ID, никнейм, игровой профиль).</li>
+      <li><strong>Внутриигровые ценности</strong> — очки, монеты, предметы, достижения и иные элементы игровой механики, не имеющие реальной денежной стоимости.</li>
+    </ul>
+  </div>
 
-  <h2>6. Прекращение использования</h2>
-  <ul>
-    <li>Пользователь может прекратить использование бота в любое время.</li>
-    <li>Администрация оставляет за собой право ограничить доступ к боту или удалить аккаунт при нарушении правил.</li>
-  </ul>
+  <!-- 3 -->
+  <div class="section" id="s3">
+    <div class="section-header"><span class="section-num">03</span><h2>Функционал бота</h2></div>
+    <p>Бот FernieX предоставляет следующие сервисы:</p>
+    <ul>
+      <li><strong>Игровой функционал:</strong> мини-игры, ролевые механики, системы прокачки, рейтинги, внутриигровая экономика;</li>
+      <li><strong>Модерация:</strong> автоматическое и ручное ограничение прав участников, выдача предупреждений, временные и постоянные блокировки при нарушении правил чата;</li>
+      <li><strong>Информационные сервисы:</strong> персональная и общая статистика, достижения, напоминания, уведомления;</li>
+      <li><strong>Инструменты сообщества:</strong> автоматизация процессов в группах и каналах Telegram.</li>
+    </ul>
+    <div class="infobox gold">
+      <span class="infobox-icon">⚠️</span>
+      <p>Бот предоставляется <strong>на безвозмездной основе</strong>. Внутриигровые ценности не являются объектами гражданских прав и не могут быть обменяны на реальные деньги или иное имущество.</p>
+    </div>
+  </div>
 
-  <h2>7. Применимое право и досудебное урегулирование споров</h2>
-  <p>Настоящие Условия регулируются законодательством Российской Федерации.</p>
-  <p>Все споры или недопонимания, возникающие из использования бота, по возможности должны разрешаться путем досудебного урегулирования непосредственно с администрацией через Telegram или официальные каналы связи.</p>
-  <p>Если досудебное урегулирование не приводит к результату, споры подлежат рассмотрению в судах Российской Федерации в соответствии с местной юрисдикцией (ст. 452, 453 Гражданского кодекса РФ: <a href="http://www.consultant.ru/document/cons_doc_LAW_5142/0f9830a6f564b5f593c86a2337b6e8f4c8f9e24c/">ГК РФ</a>).</p>
+  <!-- 4 -->
+  <div class="section" id="s4">
+    <div class="section-header"><span class="section-num">04</span><h2>Условия доступа к сервису</h2></div>
+    <p>Для использования Бота Пользователь обязан:</p>
+    <ul>
+      <li>Иметь действующую учётную запись в мессенджере Telegram;</li>
+      <li>Соответствовать возрастному цензу: использование Бота разрешено лицам, достигшим <strong>14 лет</strong>. Лица от 14 до 18 лет используют Бот с согласия родителей или законных представителей (<span class="law-ref">ст. 26 ГК РФ</span>);</li>
+      <li>Принять настоящие Условия и Политику конфиденциальности в полном объёме.</li>
+    </ul>
+    <div class="infobox red">
+      <span class="infobox-icon">🚫</span>
+      <p>Лица <strong>младше 14 лет</strong> не вправе использовать Бот. При обнаружении такого факта Администрация вправе незамедлительно удалить аккаунт и связанные данные.</p>
+    </div>
+  </div>
 
-  <h2>8. Разрешение споров</h2>
-  <ul>
-    <li>Перед обращением в суд рекомендуется попытаться урегулировать спор напрямую с администрацией через Telegram (@user) или официальные каналы на сайте.</li>
-    <li>Досудебное урегулирование включает:
-      <ul>
-        <li>описание сути претензии или проблемы;</li>
-        <li>предоставление доказательств (скриншоты, переписка, ID пользователя и т.д.);</li>
-        <li>ожидание ответа администрации в разумный срок (обычно до 30 календарных дней) в соответствии с <a href="http://www.consultant.ru/document/cons_doc_LAW_152/">ФЗ №152 «О персональных данных»</a>.</li>
-      </ul>
-    </li>
-    <li>Если досудебное урегулирование не приводит к соглашению, споры подлежат рассмотрению в судах РФ.</li>
-    <li>Администрация оставляет за собой право вносить изменения в Условия без предварительного уведомления; актуальная версия всегда доступна на сайте и в боте.</li>
-  </ul>
+  <!-- 5 -->
+  <div class="section" id="s5">
+    <div class="section-header"><span class="section-num">05</span><h2>Права и обязанности пользователя</h2></div>
+    <p><strong>Пользователь имеет право:</strong></p>
+    <ul>
+      <li>Использовать все доступные функции Бота в соответствии с настоящими Условиями;</li>
+      <li>Обращаться в поддержку по вопросам работы Сервиса;</li>
+      <li>Запрашивать информацию о своих персональных данных, их исправление или удаление согласно Политике конфиденциальности;</li>
+      <li>Обжаловать решения о модерационных санкциях через официальные каналы.</li>
+    </ul>
+    <p style="margin-top:14px"><strong>Пользователь обязан:</strong></p>
+    <ul>
+      <li>Соблюдать нормы действующего законодательства РФ при использовании Бота (<span class="law-ref">ст. 2, 10 ГК РФ</span>);</li>
+      <li>Не передавать доступ к своему аккаунту третьим лицам;</li>
+      <li>Предоставлять достоверную информацию при обращениях в поддержку;</li>
+      <li>Уважительно относиться к другим участникам сообщества;</li>
+      <li>Незамедлительно уведомлять Администрацию об обнаруженных уязвимостях или сбоях в работе Бота.</li>
+    </ul>
+  </div>
+
+  <!-- 6 -->
+  <div class="section" id="s6">
+    <div class="section-header"><span class="section-num">06</span><h2>Права и обязанности администрации</h2></div>
+    <p><strong>Администрация имеет право:</strong></p>
+    <ul>
+      <li>Вносить изменения в функционал, правила и настоящие Условия в одностороннем порядке;</li>
+      <li>Временно приостанавливать работу Бота для проведения технических работ;</li>
+      <li>Применять модерационные санкции к нарушителям Условий;</li>
+      <li>Удалять аккаунты и связанные данные при грубых или систематических нарушениях.</li>
+    </ul>
+    <p style="margin-top:14px"><strong>Администрация обязана:</strong></p>
+    <ul>
+      <li>Обрабатывать персональные данные пользователей в соответствии с <span class="law-ref">152-ФЗ</span> и Политикой конфиденциальности;</li>
+      <li>Рассматривать обращения пользователей в установленные сроки (раздел 12);</li>
+      <li>Уведомлять пользователей о существенных изменениях Условий;</li>
+      <li>Принимать разумные технические меры для обеспечения доступности и безопасности Сервиса.</li>
+    </ul>
+  </div>
+
+  <!-- 7 -->
+  <div class="section" id="s7">
+    <div class="section-header"><span class="section-num">07</span><h2>Запрещённые действия</h2></div>
+    <p>При использовании Бота категорически запрещается:</p>
+    <ul>
+      <li>Распространение незаконного контента: призывы к насилию, экстремизм, материалы CSAM, нарушение авторских прав (<span class="law-ref">ст. 1229, 1250 ГК РФ</span>; <span class="law-ref">ст. 280, 282 УК РФ</span>);</li>
+      <li>Спам, флуд, массовая рассылка рекламных сообщений без согласия получателей;</li>
+      <li>Использование сторонних скриптов, ботов или программ для автоматизированного взаимодействия с Ботом (читерство);</li>
+      <li>Попытки взлома, обхода защиты или несанкционированного доступа к системам Бота (<span class="law-ref">ст. 272, 273 УК РФ</span>);</li>
+      <li>Эксплуатация багов и уязвимостей для получения нечестного игрового преимущества;</li>
+      <li>Продажа, обмен или передача внутриигровых ценностей за реальные деньги или иное имущество;</li>
+      <li>Сбор персональных данных других пользователей без их согласия (<span class="law-ref">152-ФЗ</span>);</li>
+      <li>Любые действия, направленные на дестабилизацию работы Сервиса.</li>
+    </ul>
+    <div class="infobox red">
+      <span class="infobox-icon">⚠️</span>
+      <p>Нарушение запретов, предусмотренных уголовным законодательством, влечёт передачу информации в правоохранительные органы. Администрация не несёт ответственности за действия пользователей, нарушающих закон.</p>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="section" id="s8">
+    <div class="section-header"><span class="section-num">08</span><h2>Интеллектуальная собственность</h2></div>
+    <p>Все объекты интеллектуальной собственности, составляющие Бот (программный код, тексты, игровые механики, дизайн, графика, базы данных), являются собственностью Администрации и охраняются в соответствии с <span class="law-ref">ч. IV ГК РФ</span> (ст. 1229–1260).</p>
+    <p>Пользователю предоставляется <strong>ограниченная, неисключительная, непередаваемая лицензия</strong> на использование Бота исключительно в личных некоммерческих целях в рамках функционала Сервиса.</p>
+    <p>Контент, генерируемый Пользователем (сообщения, результаты игр, достижения), остаётся его собственностью. Вместе с тем Пользователь предоставляет Администрации <strong>безвозмездную неисключительную лицензию</strong> на использование такого контента в целях обеспечения работы Сервиса: отображение другим пользователям, ведение статистики, модерация (<span class="law-ref">ст. 1286 ГК РФ</span>).</p>
+    <div class="infobox purple">
+      <span class="infobox-icon">©️</span>
+      <p>Копирование, воспроизведение, распространение или создание производных работ на основе контента Бота <strong>без письменного разрешения Администрации</strong> запрещено и является нарушением авторских прав.</p>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="section" id="s9">
+    <div class="section-header"><span class="section-num">09</span><h2>Ограничение ответственности</h2></div>
+    <p>Бот предоставляется <strong>«как есть»</strong> (as is) без гарантий бесперебойной, безошибочной или постоянной доступности. Администрация не несёт ответственности за:</p>
+    <ul>
+      <li>Технические сбои, временную недоступность или ошибки в работе Бота;</li>
+      <li>Потерю игровых данных, статистики или прогресса вследствие технических неполадок;</li>
+      <li>Действия и контент третьих лиц, распространяемый через Бот;</li>
+      <li>Решения платформы Telegram, влияющие на работу Бота (блокировки, ограничения API);</li>
+      <li>Косвенные, случайные или штрафные убытки, возникшие в связи с использованием или невозможностью использования Сервиса;</li>
+      <li>Точность и актуальность отображаемой статистики и игровых данных.</li>
+    </ul>
+    <div class="infobox blue">
+      <span class="infobox-icon">ℹ️</span>
+      <p>Совокупная ответственность Администрации перед Пользователем по любым основаниям ограничена суммой <strong>0 рублей</strong>, поскольку Сервис предоставляется безвозмездно (<span class="law-ref">ст. 400 ГК РФ</span>).</p>
+    </div>
+  </div>
+
+  <!-- 10 -->
+  <div class="section" id="s10">
+    <div class="section-header"><span class="section-num">10</span><h2>Модерация и санкции</h2></div>
+    <p>Администрация применяет следующую систему санкций при нарушении Условий:</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Тип нарушения</th><th>Возможная санкция</th><th>Обжалование</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Незначительное (первичное)</td><td>Предупреждение (warn)</td><td>Через поддержку</td></tr>
+          <tr><td>Повторное или среднее</td><td>Временный мут или ограничение функций</td><td>Через поддержку</td></tr>
+          <tr><td>Систематическое или грубое</td><td>Постоянная блокировка аккаунта</td><td>Через официальный форум</td></tr>
+          <tr><td>Нарушение законодательства</td><td>Блокировка + передача данных в органы</td><td>Не предусмотрено</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Санкции могут применяться как автоматически (антиспам-системой), так и вручную модераторами. Решения о санкциях могут быть обжалованы через официальный <a href="https://ferniex.hgweb.ru" target="_blank">форум FernieX</a> или командой <code>/ask {апелляция}</code>.</p>
+  </div>
+
+  <!-- 11 -->
+  <div class="section" id="s11">
+    <div class="section-header"><span class="section-num">11</span><h2>Прекращение использования</h2></div>
+    <p>Пользователь вправе в любой момент прекратить использование Бота, заблокировав его в Telegram. Для удаления игрового профиля и персональных данных необходимо подать заявку в соответствии с Политикой конфиденциальности.</p>
+    <p>Администрация вправе ограничить или полностью прекратить доступ Пользователя к Боту в случаях:</p>
+    <ul>
+      <li>Нарушения настоящих Условий;</li>
+      <li>Использования Бота в противоправных целях;</li>
+      <li>Технической необходимости (плановые работы, форс-мажор);</li>
+      <li>Прекращения работы Сервиса в целом.</li>
+    </ul>
+    <div class="infobox gold">
+      <span class="infobox-icon">📌</span>
+      <p>При прекращении работы Сервиса Администрация уведомляет пользователей не менее чем за <strong>30 дней</strong> через официальные каналы (при наличии технической возможности).</p>
+    </div>
+  </div>
+
+  <!-- 12 -->
+  <div class="section" id="s12">
+    <div class="section-header"><span class="section-num">12</span><h2>Досудебное урегулирование споров и сроки рассмотрения</h2></div>
+    <p>Все споры, возникающие из настоящих Условий или в связи с использованием Бота, подлежат обязательному досудебному урегулированию (<span class="law-ref">ст. 452 ГК РФ</span>).</p>
+    <p>Для направления претензии Пользователь обязан:</p>
+    <ul>
+      <li>Изложить суть претензии в письменной форме;</li>
+      <li>Приложить доказательства (скриншоты, Telegram ID, описание ситуации);</li>
+      <li>Направить обращение через официальный <a href="https://ferniex.hgweb.ru" target="_blank">форум FernieX</a> или командой <code>/ask {текст претензии}</code>.</li>
+    </ul>
+
+    <div class="sla-grid">
+      <div class="sla-card">
+        <div class="sla-days">3</div>
+        <div class="sla-label">рабочих дня<br>Подтверждение получения</div>
+      </div>
+      <div class="sla-card">
+        <div class="sla-days">14</div>
+        <div class="sla-label">календарных дней<br>Апелляции по санкциям</div>
+      </div>
+      <div class="sla-card">
+        <div class="sla-days">30</div>
+        <div class="sla-label">календарных дней<br>Общий срок рассмотрения</div>
+      </div>
+    </div>
+
+    <div class="table-wrap" style="margin-top:16px">
+      <table>
+        <thead>
+          <tr><th>Тип обращения</th><th>Срок ответа</th><th>Основание</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Общая претензия / жалоба</td><td><strong>До 30 календарных дней</strong></td><td>Ст. 452 ГК РФ; внутренний регламент</td></tr>
+          <tr><td>Апелляция на модерационные санкции</td><td><strong>До 14 календарных дней</strong></td><td>Внутренний регламент</td></tr>
+          <tr><td>Технические вопросы и сбои</td><td><strong>До 10 рабочих дней</strong></td><td>Внутренний регламент</td></tr>
+          <tr><td>Запросы по персональным данным</td><td><strong>До 30 календарных дней</strong></td><td>Ст. 14, 17 152-ФЗ</td></tr>
+          <tr><td>Уведомление о нарушении авторских прав</td><td><strong>До 7 рабочих дней</strong></td><td>Ст. 1250 ГК РФ</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="infobox blue">
+      <span class="infobox-icon">📋</span>
+      <p>Если досудебное урегулирование не приводит к соглашению в установленный срок, спор передаётся на рассмотрение в суд общей юрисдикции РФ по месту нахождения Администрации.</p>
+    </div>
+  </div>
+
+  <!-- 13 -->
+  <div class="section" id="s13">
+    <div class="section-header"><span class="section-num">13</span><h2>Применимое право и юрисдикция</h2></div>
+    <p>Настоящие Условия регулируются и толкуются в соответствии с законодательством <strong>Российской Федерации</strong>.</p>
+    <p>В случае невозможности досудебного урегулирования споры подлежат рассмотрению в судах общей юрисдикции Российской Федерации в соответствии с нормами процессуального законодательства (<span class="law-ref">ГПК РФ</span>).</p>
+    <p>Если какое-либо положение настоящих Условий будет признано недействительным или неисполнимым, остальные положения сохраняют полную юридическую силу (<span class="law-ref">ст. 180 ГК РФ</span>).</p>
+  </div>
+
+  <!-- 14 -->
+  <div class="section" id="s14">
+    <div class="section-header"><span class="section-num">14</span><h2>Изменения условий использования</h2></div>
+    <p>Администрация вправе в одностороннем порядке вносить изменения в настоящие Условия. При существенных изменениях пользователи уведомляются посредством:</p>
+    <ul>
+      <li>Публикации обновлённой версии на официальном сайте и в Боте;</li>
+      <li>Рассылки уведомления через функционал Бота (при наличии технической возможности);</li>
+      <li>Размещения объявления на официальном форуме FernieX.</li>
+    </ul>
+    <p>Продолжение использования Бота после вступления изменений в силу означает согласие Пользователя с обновлённой редакцией Условий.</p>
+    <div class="infobox purple">
+      <span class="infobox-icon">📌</span>
+      <p>Актуальная версия Условий всегда доступна в Боте по команде <code>/terms</code> и на официальном сайте FernieX.</p>
+    </div>
+  </div>
+
+  <!-- 15 -->
+  <div class="section" id="s15">
+    <div class="section-header"><span class="section-num">15</span><h2>Контакты</h2></div>
+    <p>По всем вопросам, связанным с настоящими Условиями, обращайтесь:</p>
+    <ul>
+      <li><strong>Официальный форум:</strong> <a href="https://ferniex.hgweb.ru" target="_blank">ferniex.hgweb.ru</a></li>
+      <li><strong>Команда в Боте:</strong> <code>/ask {текст обращения}</code></li>
+    </ul>
+    <div class="highlight">
+      <p>Также ознакомьтесь с <a href="privacy.html">Политикой конфиденциальности FernieX</a>, которая является неотъемлемой частью настоящих Условий использования.</p>
+    </div>
+  </div>
+
 </div>
 
 <footer>
-  &copy; 2025 FernieX. Все права защищены.
+  <strong>FernieX</strong> — Условия использования<br>
+  Редакция от 11 апреля 2026 г. &nbsp;·&nbsp; © 2026 FernieX. Все права защищены.<br>
+  Документ составлен в соответствии с требованиями ГК РФ, Федерального закона № 149-ФЗ и № 152-ФЗ
 </footer>
+
 </body>
 </html>
