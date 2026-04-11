@@ -4,161 +4,762 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Политика конфиденциальности | FernieX</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-/* === Базовые стили === */
-* { margin:0; padding:0; box-sizing:border-box; }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-  font-family: "Segoe UI", sans-serif;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  min-height:100vh;
-  padding:20px;
-  overflow-y:auto;
-  
-  /* Анимированный фон сайта */
-  background: linear-gradient(270deg, #6a0dad, #00c6ff, #ff3f3f, #00ff88);
-  background-size: 800% 800%;
-  animation: gradientShift 20s ease infinite;
-}
+  :root {
+    --bg: #08090d;
+    --surface: #10121a;
+    --surface2: #191c28;
+    --border: rgba(255,255,255,0.07);
+    --accent: #6d5aff;
+    --accent2: #00d4ff;
+    --gold: #ffd94a;
+    --text: #e8eaf2;
+    --muted: #8b90a8;
+    --danger: #ff4f6a;
+  }
 
-/* === Анимация градиента === */
-@keyframes gradientShift {
-  0% { background-position:0% 50%; }
-  50% { background-position:100% 50%; }
-  100% { background-position:0% 50%; }
-}
+  body {
+    font-family: 'Onest', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding-bottom: 60px;
+  }
 
-/* === Контейнер с эффектом стекла === */
-.container {
-  width:90%;
-  max-width:1000px;
-  text-align:left;
-  padding:30px 35px;
-  border-radius:20px;
-  backdrop-filter: blur(15px) saturate(180%);
-  -webkit-backdrop-filter: blur(15px) saturate(180%);
-  background: rgba(255,255,255,0.1); /* полупрозрачный */
-  border: 1px solid rgba(255,255,255,0.2);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
-  position: relative;
-  overflow: hidden;
-  animation: fadeInUp 0.6s ease forwards;
-}
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
 
-/* === Анимация появления === */
-@keyframes fadeInUp {
-  0% { opacity:0; transform:translateY(20px); }
-  100% { opacity:1; transform:translateY(0); }
-}
+  .hero {
+    position: relative;
+    padding: 70px 40px 50px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 400px;
+    background: radial-gradient(ellipse, rgba(109,90,255,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(109,90,255,0.12);
+    border: 1px solid rgba(109,90,255,0.3);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #a89dff;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero-badge span { width: 7px; height: 7px; background: #6d5aff; border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
 
-/* === Заголовки === */
-h1 {
-  font-size:2.2rem;
-  font-weight:700;
-  text-align:center;
-  margin-bottom:30px;
-  color:#fff;
-  text-shadow:0 2px 8px rgba(0,0,0,0.25);
-}
+  h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #fff 30%, #a89dff 70%, #00d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 16px;
+  }
+  .hero-sub {
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 400;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  .meta-chip {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .meta-chip .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); flex-shrink: 0; }
 
-h2 {
-  font-size:1.4rem;
-  color:#ffd600;
-  margin:25px 0 12px;
-  position:relative;
-}
-h2::after {
-  content:'';
-  display:block;
-  width:50px;
-  height:3px;
-  background: linear-gradient(90deg,#00fff7,#ff00f7);
-  border-radius:2px;
-  margin-top:5px;
-}
+  .wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
 
-/* === Параграфы и списки === */
-p, li { font-size:1rem; margin-bottom:12px; line-height:1.6; color:rgba(255,255,255,0.95); }
-ul { margin-left:20px; list-style:inside disc; }
-a { color:#00a8ff; text-decoration:underline; }
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+  }
+  .toc-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 6px;
+  }
+  .toc-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .toc-item:hover { background: var(--surface2); color: var(--text); }
+  .toc-num {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent);
+    min-width: 22px;
+  }
 
-/* === Футер === */
-footer {
-  width:100%;
-  text-align:center;
-  font-size:14px;
-  color:#fff;
-  line-height:1.5;
-  padding:15px 10px;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(15px) saturate(180%);
-  border-top:1px solid rgba(255,255,255,0.1);
-  margin-top:30px;
-}
+  .section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px 36px;
+    margin-bottom: 16px;
+    transition: border-color 0.3s;
+    animation: fadeUp 0.5s ease both;
+  }
+  .section:hover { border-color: rgba(109,90,255,0.2); }
+  @keyframes fadeUp { from { opacity:0; transform: translateY(14px) } to { opacity:1; transform: translateY(0) } }
 
-/* === Мобильная адаптивность === */
-@media (max-width:650px){
-  .container { padding:20px 25px; }
-  h1 { font-size:1.6rem; }
-  h2 { font-size:1.2rem; }
-  p, li { font-size:0.95rem; }
-}
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .section-num {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+    color: var(--accent);
+    background: rgba(109,90,255,0.1);
+    border: 1px solid rgba(109,90,255,0.2);
+    border-radius: 8px;
+    padding: 5px 10px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  h2 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  p { font-size: 0.93rem; color: var(--text); line-height: 1.75; margin-bottom: 12px; font-weight: 300; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: #fff; font-weight: 600; }
+
+  .law-ref {
+    display: inline-block;
+    background: rgba(255,217,74,0.08);
+    border: 1px solid rgba(255,217,74,0.2);
+    border-radius: 6px;
+    padding: 1px 8px;
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  ul {
+    list-style: none;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.91rem;
+    color: var(--text);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+  li::before {
+    content: '—';
+    color: var(--accent2);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .infobox {
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .infobox.blue { background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.15); }
+  .infobox.purple { background: rgba(109,90,255,0.06); border: 1px solid rgba(109,90,255,0.15); }
+  .infobox.gold { background: rgba(255,217,74,0.06); border: 1px solid rgba(255,217,74,0.15); }
+  .infobox.red { background: rgba(255,79,106,0.06); border: 1px solid rgba(255,79,106,0.15); }
+  .infobox-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .infobox p { margin: 0; font-size: 0.88rem; color: var(--muted); }
+  .infobox strong { color: var(--text); }
+
+  .table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 12px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  thead tr { background: var(--surface2); }
+  th { padding: 12px 16px; text-align: left; color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap; }
+  td { padding: 11px 16px; border-top: 1px solid var(--border); color: var(--text); font-weight: 300; vertical-align: top; line-height: 1.5; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .highlight {
+    background: linear-gradient(135deg, rgba(109,90,255,0.08), rgba(0,212,255,0.05));
+    border: 1px solid rgba(109,90,255,0.2);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+  .highlight p { margin: 0; }
+
+  a { color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(0,212,255,0.3); transition: border-color 0.2s; }
+  a:hover { border-color: var(--accent2); }
+
+  .sla-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 16px; }
+  .sla-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    text-align: center;
+  }
+  .sla-days {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .sla-label { font-size: 11px; color: var(--muted); font-weight: 500; }
+
+  footer {
+    text-align: center;
+    padding: 40px 24px 20px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
+  }
+  footer strong { color: var(--text); }
+
+  code {
+    font-family: 'Courier New', monospace;
+    background: rgba(109,90,255,0.1);
+    border: 1px solid rgba(109,90,255,0.2);
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 12px;
+    color: #a89dff;
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 50px 20px 36px; }
+    .section { padding: 22px 20px; }
+    h2 { font-size: 0.9rem; }
+  }
 </style>
 </head>
 <body>
-<div class="container">
-  <h1>🔒 Политика конфиденциальности FernieX</h1>
 
-  <h2>1. Общие положения</h2>
-  <p>Настоящая Политика конфиденциальности регулирует порядок обработки и защиты персональных данных пользователей Telegram-бота <strong>FernieX</strong>. Используя бота, вы подтверждаете согласие с условиями Политики. Обработка персональных данных осуществляется в соответствии с Федеральным законом РФ <strong>№ 152-ФЗ «О персональных данных»</strong> от 27.07.2006.</p>
+<div class="hero">
+  <div class="hero-badge"><span></span> Официальный документ</div>
+  <h1>Политика конфиденциальности</h1>
+  <p class="hero-sub">Telegram-бот <strong>FernieX</strong> — порядок сбора, обработки и защиты персональных данных пользователей</p>
+  <div class="hero-meta">
+    <span class="meta-chip"><span class="dot"></span>Редакция: 1 апреля 2025 г.</span>
+    <span class="meta-chip"><span class="dot" style="background:#ffd94a"></span>152-ФЗ · GDPR-совместимо</span>
+    <span class="meta-chip"><span class="dot" style="background:#00ff88"></span>Вступает в силу с момента публикации</span>
+  </div>
+</div>
 
-  <h2>2. Функционал бота</h2>
-  <p>FernieX предоставляет игровые механики, инструменты модерации и информационные сервисы для пользователей.</p>
+<div class="wrapper">
 
-  <h2>3. Основания и цели обработки данных</h2>
-  <ul>
-    <li><strong>Согласие пользователя</strong> – при использовании бота вы даёте согласие на обработку данных;</li>
-    <li><strong>Договор</strong> – обработка необходима для предоставления услуг в рамках функционала бота.</li>
-  </ul>
-  <ul>
-    <li>Обеспечение работы игровых механик;</li>
-    <li>Ведение статистики игр, достижений и уровней;</li>
-    <li>Обеспечение модерации чатов;</li>
-    <li>Техническая поддержка и предотвращение злоупотреблений;</li>
-    <li>Развитие и оптимизация функций бота на основе обезличенной статистики.</li>
-  </ul>
+  <div class="toc">
+    <div class="toc-title">Содержание</div>
+    <div class="toc-grid">
+      <a href="#s1" class="toc-item"><span class="toc-num">01</span>Общие положения</a>
+      <a href="#s2" class="toc-item"><span class="toc-num">02</span>Термины и определения</a>
+      <a href="#s3" class="toc-item"><span class="toc-num">03</span>Функционал и назначение бота</a>
+      <a href="#s4" class="toc-item"><span class="toc-num">04</span>Основания и цели обработки</a>
+      <a href="#s5" class="toc-item"><span class="toc-num">05</span>Состав собираемых данных</a>
+      <a href="#s6" class="toc-item"><span class="toc-num">06</span>Порядок и условия обработки</a>
+      <a href="#s7" class="toc-item"><span class="toc-num">07</span>Хранение и сроки</a>
+      <a href="#s8" class="toc-item"><span class="toc-num">08</span>Передача третьим лицам</a>
+      <a href="#s9" class="toc-item"><span class="toc-num">09</span>Права пользователей</a>
+      <a href="#s10" class="toc-item"><span class="toc-num">10</span>Сроки рассмотрения обращений</a>
+      <a href="#s11" class="toc-item"><span class="toc-num">11</span>Безопасность данных</a>
+      <a href="#s12" class="toc-item"><span class="toc-num">12</span>Несовершеннолетние</a>
+      <a href="#s13" class="toc-item"><span class="toc-num">13</span>Файлы cookie и логи</a>
+      <a href="#s14" class="toc-item"><span class="toc-num">14</span>Ответственность</a>
+      <a href="#s15" class="toc-item"><span class="toc-num">15</span>Изменения политики</a>
+      <a href="#s16" class="toc-item"><span class="toc-num">16</span>Контакты</a>
+    </div>
+  </div>
 
-  <h2>4. Сбор данных</h2>
-  <ul>
-    <li>Telegram ID пользователя;</li>
-    <li>Имя и никнейм;</li>
-    <li>Сообщения и команды, отправленные боту;</li>
-    <li>Игровую статистику;</li>
-    <li>Технические данные (логи ошибок, активность, модерация).</li>
-  </ul>
+  <div class="section" id="s1">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2>Общие положения</h2>
+    </div>
+    <p>Настоящая Политика конфиденциальности (далее — «Политика») определяет порядок обработки и защиты персональных данных физических лиц (далее — «Пользователи»), использующих Telegram-бота <strong>FernieX</strong> (далее — «Бот»).</p>
+    <p>Обработка персональных данных осуществляется в строгом соответствии с требованиями законодательства Российской Федерации, в том числе:</p>
+    <ul>
+      <li><span class="law-ref">152-ФЗ</span> Федеральный закон «О персональных данных» от 27.07.2006 № 152-ФЗ;</li>
+      <li><span class="law-ref">Постановление № 1119</span> Постановление Правительства РФ «Об утверждении требований к защите ПДн» от 01.11.2012;</li>
+      <li><span class="law-ref">Приказ ФСТЭК № 21</span> Приказ ФСТЭК России от 18.02.2013 № 21 — организационные и технические меры по защите;</li>
+      <li><span class="law-ref">149-ФЗ</span> Федеральный закон «Об информации, информационных технологиях и о защите информации» от 27.07.2006.</li>
+    </ul>
+    <div class="infobox blue">
+      <span class="infobox-icon">ℹ️</span>
+      <p>Начало использования Бота означает безоговорочное согласие Пользователя с условиями настоящей Политики. Если вы не согласны — немедленно прекратите использование Бота и направьте запрос на удаление данных согласно разделу 9.</p>
+    </div>
+  </div>
 
-  <h2>5. Хранение данных</h2>
-  <ul>
-    <li>Идентификаторы – на период использования бота + 6 месяцев после удаления;</li>
-    <li>Игровая статистика – до удаления аккаунта;</li>
-    <li>Технические логи – до 12 месяцев.</li>
-  </ul>
+  <div class="section" id="s2">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2>Термины и определения</h2>
+    </div>
+    <ul>
+      <li><strong>Персональные данные</strong> — любая информация, прямо или косвенно относящаяся к определённому физическому лицу (ч. 1 ст. 3 152-ФЗ).</li>
+      <li><strong>Обработка ПДн</strong> — любое действие с персональными данными: сбор, запись, систематизация, накопление, хранение, уточнение, извлечение, использование, передача, блокирование, удаление (ч. 3 ст. 3 152-ФЗ).</li>
+      <li><strong>Оператор</strong> — лицо, организующее и осуществляющее обработку ПДн (команда FernieX).</li>
+      <li><strong>Субъект ПДн / Пользователь</strong> — физическое лицо, использующее Бот.</li>
+      <li><strong>Обезличивание</strong> — действия, в результате которых невозможно определить принадлежность ПДн конкретному субъекту без дополнительной информации.</li>
+      <li><strong>Уничтожение ПДн</strong> — действия, исключающие возможность восстановления содержания ПДн в информационной системе.</li>
+    </ul>
+  </div>
 
-  <h2>6. Права пользователей</h2>
-  <p>Вы имеете право запросить копию данных, потребовать исправления или удаления, отозвать согласие и прекратить использование бота.</p>
-  <p><strong>Как подать запрос:</strong> на официальном <a href="https://ferniex.hgweb.ru/index.php?threads/Заявление-на-удаление-профиля-в-боте.25/">форуме</a> или командой <strong>/ask {удалите аккаунт}</strong>. Обработка – до 30 дней.</p>
+  <div class="section" id="s3">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2>Функционал и назначение бота</h2>
+    </div>
+    <p>Бот FernieX предоставляет следующие сервисы в экосистеме Telegram:</p>
+    <ul>
+      <li>Игровые механики: ролевые игры, мини-игры, системы прокачки персонажей, рейтинги;</li>
+      <li>Инструменты модерации чатов: антиспам, предупреждения, блокировки, ведение журнала нарушений;</li>
+      <li>Информационные и статистические сервисы для сообществ;</li>
+      <li>Развлекательные функции и автоматизация процессов в группах и каналах.</li>
+    </ul>
+  </div>
 
-  <h2>7. Безопасность</h2>
-  <p>Используем технические и организационные меры для защиты данных. Абсолютная безопасность передачи через интернет не гарантируется.</p>
+  <div class="section" id="s4">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2>Основания и цели обработки персональных данных</h2>
+    </div>
+    <p>Обработка персональных данных осуществляется исключительно на законных основаниях, предусмотренных ст. 6 152-ФЗ:</p>
+    <ul>
+      <li><strong>Согласие субъекта</strong> (п. 1 ч. 1 ст. 6 152-ФЗ) — пользователь добровольно взаимодействует с Ботом;</li>
+      <li><strong>Исполнение договора</strong> (п. 5 ч. 1 ст. 6 152-ФЗ) — обработка необходима для предоставления функционала Бота;</li>
+      <li><strong>Законный интерес оператора</strong> (п. 7 ч. 1 ст. 6 152-ФЗ) — обеспечение безопасности и предотвращение злоупотреблений.</li>
+    </ul>
+    <p style="margin-top:16px">Цели обработки:</p>
+    <ul>
+      <li>Обеспечение работы игровых механик и персонализация игрового процесса;</li>
+      <li>Ведение статистики, достижений, уровней и рейтингов пользователей;</li>
+      <li>Реализация функций модерации чатов и обеспечение безопасности сообществ;</li>
+      <li>Техническая поддержка пользователей и разрешение споров;</li>
+      <li>Предотвращение мошенничества, спама и иных нарушений правил;</li>
+      <li>Улучшение и оптимизация функций Бота на основе обезличенной аналитики;</li>
+      <li>Исполнение требований законодательства РФ.</li>
+    </ul>
+    <div class="infobox gold">
+      <span class="infobox-icon">⚖️</span>
+      <p><strong>Важно:</strong> обработка персональных данных осуществляется строго в указанных целях. Использование данных в иных целях без отдельного согласия пользователя не допускается (ст. 5 152-ФЗ).</p>
+    </div>
+  </div>
 
-  <h2>8. Изменения политики</h2>
-  <p>Мы можем обновлять Политику. Актуальная версия всегда доступна в боте и на официальном сайте.</p>
+  <div class="section" id="s5">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2>Состав собираемых персональных данных</h2>
+    </div>
+    <p>Оператор обрабатывает только те данные, которые необходимы для достижения заявленных целей (принцип минимизации, ст. 5 152-ФЗ):</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Категория данных</th>
+            <th>Конкретный состав</th>
+            <th>Цель сбора</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Идентификационные</strong></td>
+            <td>Telegram ID, имя (first_name), фамилия (last_name, если указана), никнейм (username)</td>
+            <td>Идентификация пользователя в системе</td>
+          </tr>
+          <tr>
+            <td><strong>Игровые</strong></td>
+            <td>Уровень, опыт, монеты, инвентарь, достижения, статистика игр, история матчей</td>
+            <td>Реализация игровых механик и рейтингов</td>
+          </tr>
+          <tr>
+            <td><strong>Поведенческие</strong></td>
+            <td>Команды, отправленные боту, время активности, частота взаимодействий</td>
+            <td>Улучшение функционала, персонализация</td>
+          </tr>
+          <tr>
+            <td><strong>Модерационные</strong></td>
+            <td>История предупреждений, банов, нарушений правил в чатах</td>
+            <td>Обеспечение безопасности сообществ</td>
+          </tr>
+          <tr>
+            <td><strong>Технические</strong></td>
+            <td>Логи ошибок, временны́е метки запросов, идентификаторы чатов/групп</td>
+            <td>Диагностика, стабильность работы</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="infobox red">
+      <span class="infobox-icon">🚫</span>
+      <p>Оператор <strong>не собирает</strong> специальные категории персональных данных (ст. 10 152-ФЗ): расовое или этническое происхождение, политические взгляды, религиозные убеждения, состояние здоровья, биометрические данные.</p>
+    </div>
+  </div>
+
+  <div class="section" id="s6">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2>Порядок и условия обработки данных</h2>
+    </div>
+    <p>Обработка персональных данных осуществляется с соблюдением принципов, закреплённых в ст. 5 Федерального закона № 152-ФЗ:</p>
+    <ul>
+      <li><strong>Законность и справедливость</strong> — обработка только на предусмотренных законом основаниях;</li>
+      <li><strong>Целевое ограничение</strong> — данные не обрабатываются в целях, несовместимых с заявленными;</li>
+      <li><strong>Минимизация данных</strong> — сбор только тех данных, которые необходимы для конкретной цели;</li>
+      <li><strong>Точность</strong> — данные поддерживаются в актуальном состоянии; неточные данные уничтожаются или уточняются;</li>
+      <li><strong>Ограничение хранения</strong> — хранение не дольше, чем требуется для достижения целей обработки;</li>
+      <li><strong>Целостность и конфиденциальность</strong> — применение технических и организационных мер защиты.</li>
+    </ul>
+    <p style="margin-top:14px">Обработка данных осуществляется <strong>без использования средств автоматизированного принятия решений</strong>, существенно влияющих на права и законные интересы субъектов, в смысле ст. 16 152-ФЗ.</p>
+  </div>
+
+  <div class="section" id="s7">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2>Хранение данных и сроки обработки</h2>
+    </div>
+    <p>Персональные данные хранятся не дольше, чем этого требуют цели их обработки (ч. 7 ст. 5 152-ФЗ):</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Категория данных</th>
+            <th>Срок хранения</th>
+            <th>Основание</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Идентификационные данные (Telegram ID, имя, никнейм)</td>
+            <td>На период использования + 6 месяцев после прекращения</td>
+            <td>Возможность восстановления аккаунта, разрешения споров</td>
+          </tr>
+          <tr>
+            <td>Игровая статистика и прогресс</td>
+            <td>До момента удаления аккаунта пользователем</td>
+            <td>Непрерывность игрового процесса</td>
+          </tr>
+          <tr>
+            <td>История модерации (баны, предупреждения)</td>
+            <td>3 года с момента фиксации</td>
+            <td>Обеспечение безопасности, разрешение споров</td>
+          </tr>
+          <tr>
+            <td>Технические логи и журналы ошибок</td>
+            <td>До 12 месяцев</td>
+            <td>Диагностика и обеспечение стабильности</td>
+          </tr>
+          <tr>
+            <td>Резервные копии</td>
+            <td>До 30 дней после удаления основных данных</td>
+            <td>Технические нужды, восстановление при сбоях</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>По истечении сроков данные уничтожаются или обезличиваются. Факт уничтожения фиксируется в журнале операций оператора.</p>
+  </div>
+
+  <div class="section" id="s8">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2>Передача данных третьим лицам</h2>
+    </div>
+    <p>Оператор <strong>не передаёт</strong> персональные данные пользователей третьим лицам без их согласия, за исключением случаев, прямо предусмотренных законодательством РФ:</p>
+    <ul>
+      <li>По запросу уполномоченных государственных органов (суды, прокуратура, следственные органы) в порядке, установленном законом;</li>
+      <li>Для защиты жизни, здоровья или иных жизненно важных интересов субъекта ПДн или третьих лиц;</li>
+      <li>При обработке обезличенных данных в аналитических целях (без возможности идентификации конкретного лица).</li>
+    </ul>
+    <div class="infobox purple">
+      <span class="infobox-icon">🔗</span>
+      <p><strong>Telegram как платформа:</strong> Бот функционирует в экосистеме Telegram. Передача данных через API Telegram регулируется <a href="https://telegram.org/privacy" target="_blank">Политикой конфиденциальности Telegram</a>. Оператор не контролирует данную передачу и не несёт ответственности за действия Telegram.</p>
+    </div>
+    <p>Трансграничная передача персональных данных не осуществляется без соблюдения требований гл. 4.1 152-ФЗ и проверки надлежащего уровня защиты в стране-получателе.</p>
+  </div>
+
+  <div class="section" id="s9">
+    <div class="section-header">
+      <span class="section-num">09</span>
+      <h2>Права пользователей (субъектов персональных данных)</h2>
+    </div>
+    <p>В соответствии со ст. 14–17 Федерального закона № 152-ФЗ каждый пользователь имеет право:</p>
+    <ul>
+      <li><strong>На доступ к данным</strong> — получить информацию о составе, целях, сроках и способах обработки своих ПДн (ст. 14 152-ФЗ);</li>
+      <li><strong>На уточнение и исправление</strong> — потребовать устранения неполных, устаревших или неточных данных (ст. 14 152-ФЗ);</li>
+      <li><strong>На удаление («право быть забытым»)</strong> — потребовать уничтожения ПДн, если они получены незаконно, утратили актуальность или пользователь отозвал согласие (ст. 17 152-ФЗ);</li>
+      <li><strong>На отзыв согласия</strong> — в любой момент без объяснения причин (ч. 2 ст. 9 152-ФЗ); отзыв не затрагивает правомерность обработки до его получения;</li>
+      <li><strong>На блокирование</strong> — потребовать временного прекращения обработки при выявлении незаконных действий оператора (ст. 15 152-ФЗ);</li>
+      <li><strong>На обжалование</strong> — направить жалобу в Роскомнадзор или в суд;</li>
+      <li><strong>На возмещение ущерба</strong> — потребовать компенсации убытков и морального вреда при нарушении оператором требований 152-ФЗ.</li>
+    </ul>
+    <div class="highlight">
+      <p><strong>Как реализовать право:</strong> направьте запрос через официальный <a href="https://ferniex.hgweb.ru/index.php?threads/Заявление-на-удаление-профиля-в-боте.25/" target="_blank">форум FernieX</a> или командой <code>/ask {ваше обращение}</code> непосредственно в Боте. Подробнее о сроках — в разделе 10.</p>
+    </div>
+  </div>
+
+  <div class="section" id="s10">
+    <div class="section-header">
+      <span class="section-num">10</span>
+      <h2>Сроки рассмотрения обращений в поддержку</h2>
+    </div>
+    <p>Оператор обрабатывает все обращения, связанные с персональными данными и иными вопросами работы Бота, в строгом соответствии со сроками, установленными законодательством и внутренними регламентами.</p>
+    <div class="sla-grid">
+      <div class="sla-card">
+        <div class="sla-days">3</div>
+        <div class="sla-label">рабочих дня<br>Подтверждение получения запроса</div>
+      </div>
+      <div class="sla-card">
+        <div class="sla-days">10</div>
+        <div class="sla-label">рабочих дней<br>Технические вопросы и ошибки</div>
+      </div>
+      <div class="sla-card">
+        <div class="sla-days">30</div>
+        <div class="sla-label">календарных дней<br>Запросы о ПДн и удаление аккаунта</div>
+      </div>
+    </div>
+    <p style="margin-top:20px">Конкретные сроки по видам обращений:</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Тип обращения</th>
+            <th>Срок ответа</th>
+            <th>Правовое основание</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Запрос на предоставление сведений об обрабатываемых ПДн</td>
+            <td><strong>До 30 календарных дней</strong></td>
+            <td>Ст. 14 ч. 4 152-ФЗ</td>
+          </tr>
+          <tr>
+            <td>Запрос на исправление неточных или устаревших данных</td>
+            <td><strong>До 7 рабочих дней</strong> с момента выявления</td>
+            <td>Ст. 14 ч. 5 152-ФЗ</td>
+          </tr>
+          <tr>
+            <td>Запрос на удаление аккаунта / уничтожение ПДн</td>
+            <td><strong>До 30 календарных дней</strong></td>
+            <td>Ст. 17 152-ФЗ</td>
+          </tr>
+          <tr>
+            <td>Запрос на блокирование обработки (при незаконных действиях)</td>
+            <td><strong>Незамедлительно</strong> (не позднее 3 рабочих дней)</td>
+            <td>Ст. 15 ч. 1 152-ФЗ</td>
+          </tr>
+          <tr>
+            <td>Общие технические вопросы и жалобы на работу Бота</td>
+            <td><strong>До 10 рабочих дней</strong></td>
+            <td>Внутренний регламент</td>
+          </tr>
+          <tr>
+            <td>Обращения по вопросам модерации и апелляции</td>
+            <td><strong>До 14 календарных дней</strong></td>
+            <td>Внутренний регламент</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="infobox blue">
+      <span class="infobox-icon">📋</span>
+      <p>Срок рассмотрения начинает исчисляться с момента получения оператором полного и корректно оформленного обращения. При необходимости уточнения информации оператор вправе запросить дополнительные сведения; срок приостанавливается до получения ответа от заявителя, но не более чем на 30 дней.</p>
+    </div>
+    <div class="infobox gold">
+      <span class="infobox-icon">📨</span>
+      <p><strong>Как направить обращение:</strong> через <a href="https://ferniex.hgweb.ru/index.php?threads/Заявление-на-удаление-профиля-в-боте.25/" target="_blank">официальный форум</a> или командой <code>/ask {текст обращения}</code> в Боте. Анонимные и заведомо недобросовестные обращения рассмотрению не подлежат.</p>
+    </div>
+  </div>
+
+  <div class="section" id="s11">
+    <div class="section-header">
+      <span class="section-num">11</span>
+      <h2>Безопасность персональных данных</h2>
+    </div>
+    <p>Оператор реализует технические и организационные меры защиты в соответствии с Постановлением Правительства РФ № 1119 от 01.11.2012 и Приказом ФСТЭК № 21:</p>
+    <ul>
+      <li>Шифрование данных при хранении и передаче (TLS 1.2/1.3);</li>
+      <li>Разграничение прав доступа к данным по принципу минимальных привилегий;</li>
+      <li>Регулярное резервное копирование и процедуры восстановления;</li>
+      <li>Мониторинг несанкционированного доступа и попыток взлома;</li>
+      <li>Периодический аудит системы защиты информации;</li>
+      <li>Обязательство о конфиденциальности для лиц, имеющих доступ к данным.</li>
+    </ul>
+    <div class="infobox red">
+      <span class="infobox-icon">⚠️</span>
+      <p>Несмотря на применяемые меры, <strong>абсолютная гарантия безопасности при передаче данных через интернет невозможна</strong>. Оператор не несёт ответственности за действия третьих лиц, получивших несанкционированный доступ к данным вследствие уязвимостей платформы Telegram или сетевой инфраструктуры.</p>
+    </div>
+    <p>В случае выявления инцидента безопасности оператор уведомляет Роскомнадзор в течение 24 часов и субъектов ПДн — в течение 72 часов (в соответствии с требованиями, введёнными Федеральным законом № 266-ФЗ от 14.07.2022).</p>
+  </div>
+
+  <div class="section" id="s12">
+    <div class="section-header">
+      <span class="section-num">12</span>
+      <h2>Несовершеннолетние пользователи</h2>
+    </div>
+    <p>Бот <strong>не предназначен</strong> для использования лицами, не достигшими 14 лет. Оператор не осуществляет сбор персональных данных детей до 14 лет намеренно.</p>
+    <p>Если оператору станет известно, что персональные данные лица до 14 лет были получены без согласия родителей или законных представителей, такие данные будут незамедлительно уничтожены.</p>
+    <p>Пользователи в возрасте от 14 до 18 лет вправе использовать Бот с согласия родителей или законных представителей в соответствии со ст. 26 ГК РФ.</p>
+  </div>
+
+  <div class="section" id="s13">
+    <div class="section-header">
+      <span class="section-num">13</span>
+      <h2>Журналы (логи) и технические данные</h2>
+    </div>
+    <p>При взаимодействии с Ботом автоматически фиксируются технические данные в соответствии с Федеральным законом № 149-ФЗ:</p>
+    <ul>
+      <li>Временны́е метки запросов (дата и время обращения к Боту);</li>
+      <li>Тип и содержание команд;</li>
+      <li>Идентификаторы чатов и групп, в которых используется Бот;</li>
+      <li>Технические ошибки и исключения для диагностики.</li>
+    </ul>
+    <p>Указанные данные используются исключительно в технических целях, хранятся не более 12 месяцев и не передаются третьим лицам.</p>
+  </div>
+
+  <div class="section" id="s14">
+    <div class="section-header">
+      <span class="section-num">14</span>
+      <h2>Ответственность сторон</h2>
+    </div>
+    <p>Оператор несёт ответственность за нарушение требований Федерального закона № 152-ФЗ в пределах, установленных действующим законодательством РФ, включая административную ответственность по ст. 13.11 КоАП РФ.</p>
+    <p>Пользователь несёт ответственность за:</p>
+    <ul>
+      <li>Достоверность предоставляемых данных;</li>
+      <li>Сохранность доступа к своему Telegram-аккаунту;</li>
+      <li>Соблюдение правил использования Бота и действующего законодательства при взаимодействии с другими пользователями.</li>
+    </ul>
+    <p>Оператор не несёт ответственности за содержание сообщений, передаваемых пользователями через Telegram, а также за действия платформы Telegram в отношении данных пользователей.</p>
+  </div>
+
+  <div class="section" id="s15">
+    <div class="section-header">
+      <span class="section-num">15</span>
+      <h2>Изменения политики конфиденциальности</h2>
+    </div>
+    <p>Оператор вправе в одностороннем порядке вносить изменения в настоящую Политику. При существенных изменениях, затрагивающих права субъектов ПДн, оператор уведомляет пользователей посредством:</p>
+    <ul>
+      <li>Публикации обновлённой версии в Боте и на официальном сайте;</li>
+      <li>Рассылки уведомления через функционал Бота (при наличии технической возможности);</li>
+      <li>Размещения объявления на официальном форуме FernieX.</li>
+    </ul>
+    <p>Продолжение использования Бота после вступления изменений в силу означает согласие пользователя с обновлённой редакцией Политики. Дата последнего изменения всегда указывается в заголовке документа.</p>
+    <div class="infobox purple">
+      <span class="infobox-icon">📌</span>
+      <p>Актуальная версия Политики всегда доступна в Боте по команде <code>/privacy</code> и на официальном сайте FernieX.</p>
+    </div>
+  </div>
+
+  <div class="section" id="s16">
+    <div class="section-header">
+      <span class="section-num">16</span>
+      <h2>Контакты и уполномоченный орган</h2>
+    </div>
+    <p>По всем вопросам, связанным с обработкой персональных данных и реализацией прав субъектов ПДн, обращайтесь:</p>
+    <ul>
+      <li><strong>Официальный форум:</strong> <a href="https://ferniex.hgweb.ru" target="_blank">ferniex.hgweb.ru</a></li>
+      <li><strong>Команда в Боте:</strong> <code>/ask {текст обращения}</code></li>
+    </ul>
+    <p style="margin-top:16px">Вы также вправе обратиться с жалобой в <strong>Федеральную службу по надзору в сфере связи, информационных технологий и массовых коммуникаций (Роскомнадзор)</strong>:</p>
+    <ul>
+      <li>Сайт: <a href="https://rkn.gov.ru" target="_blank">rkn.gov.ru</a></li>
+      <li>Телефон: 8-800-222-99-77 (бесплатно по РФ)</li>
+    </ul>
+  </div>
+
 </div>
 
 <footer>
-  &copy; 2025 FernieX. Все права защищены.
+  <strong>FernieX</strong> — Политика конфиденциальности<br>
+  Редакция от 1 апреля 2025 г. &nbsp;·&nbsp; © 2025 FernieX. Все права защищены.<br>
+  Документ составлен в соответствии с требованиями Федерального закона № 152-ФЗ «О персональных данных»
 </footer>
+
 </body>
 </html>
