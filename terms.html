@@ -251,6 +251,56 @@
     font-size: 12px;
     color: #a89dff;
   }
+  .css-emoji {
+    display: inline-block;
+    position: relative;
+    width: 1.1em;
+    height: 1.1em;
+    margin: 0 .08em;
+    vertical-align: -.16em;
+    color: var(--accent2);
+    animation-delay: var(--icon-delay, 0s);
+  }
+  .icon-info { border: 2px solid currentColor; border-radius: 50%; animation: info-pulse 2.4s ease-in-out infinite; }
+  .icon-info::before { content: 'i'; position: absolute; inset: -1px 0 0; text-align: center; font: 700 .82em/1.1 'Onest', sans-serif; }
+  .icon-scales { color: var(--gold); animation: scale-swing 3s ease-in-out infinite; }
+  .icon-scales::before { content: ''; position: absolute; left: 50%; top: 12%; width: 2px; height: 76%; background: currentColor; transform: translateX(-50%); }
+  .icon-scales::after { content: ''; position: absolute; left: 15%; right: 15%; top: 28%; height: 2px; background: currentColor; box-shadow: 0 8px 0 -.3px currentColor; }
+  .icon-chart { border-left: 1px solid currentColor; border-bottom: 1px solid currentColor; width: 1.2em; height: 1em; }
+  .chart-bar { position: absolute; bottom: 1px; width: 18%; border-radius: 2px 2px 0 0; animation: chart-rise 1.5s ease-in-out infinite alternate; }
+  .chart-bar:nth-child(1) { left: 15%; height: 40%; background: #6d5aff; animation-delay: -.4s; }
+  .chart-bar:nth-child(2) { left: 42%; height: 75%; background: #ff4f6a; animation-delay: -.9s; }
+  .chart-bar:nth-child(3) { left: 69%; height: 52%; background: #00d4ff; animation-delay: -.2s; }
+  .icon-ban { border: 2px solid #ff4f6a; border-radius: 50%; animation: ban-shake 2.8s ease-in-out infinite; }
+  .icon-ban::after { content: ''; position: absolute; left: 12%; top: 46%; width: 76%; height: 2px; background: #ff4f6a; transform: rotate(-45deg); }
+  .icon-links { color: #a89dff; animation: links-turn 3.5s ease-in-out infinite; }
+  .icon-links::before, .icon-links::after { content: ''; position: absolute; width: 48%; height: 32%; border: 2px solid currentColor; border-radius: 6px; transform: rotate(-42deg); }
+  .icon-links::before { left: 2%; top: 18%; }
+  .icon-links::after { right: 2%; bottom: 18%; }
+  .icon-clipboard { color: #a89dff; border: 2px solid currentColor; border-radius: 3px; animation: clipboard-tap 2.7s ease-in-out infinite; }
+  .icon-clipboard::before { content: ''; position: absolute; left: 28%; top: -3px; width: 44%; height: 4px; border: 1px solid currentColor; border-radius: 3px; background: var(--surface); }
+  .icon-clipboard::after { content: ''; position: absolute; left: 22%; top: 42%; width: 56%; height: 2px; background: currentColor; box-shadow: 0 4px 0 currentColor; }
+  .icon-envelope { color: #00d4ff; border: 2px solid currentColor; border-radius: 3px; animation: envelope-flap 2.5s ease-in-out infinite; }
+  .icon-envelope::after { content: ''; position: absolute; left: 17%; top: 4%; width: 60%; height: 60%; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg) scale(.72); }
+  .icon-warning { color: var(--gold); animation: warning-bounce 2.2s ease-in-out infinite; }
+  .icon-warning::before { content: ''; position: absolute; inset: 3% 0 0; background: currentColor; clip-path: polygon(50% 0, 100% 92%, 0 92%); }
+  .icon-warning::after { content: '!'; position: absolute; inset: 24% 0 0; text-align: center; color: var(--surface); font: 900 .78em/1 'Onest', sans-serif; }
+  .icon-pin { color: #ff4f6a; animation: pin-drop 2.8s ease-in-out infinite; }
+  .icon-pin::before { content: ''; position: absolute; left: 19%; top: 3%; width: 58%; height: 58%; border: 2px solid currentColor; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); }
+  .icon-pin::after { content: ''; position: absolute; left: 43%; top: 76%; width: 14%; height: 14%; border-radius: 50%; background: currentColor; }
+  .icon-copyright { border: 2px solid currentColor; border-radius: 50%; color: var(--muted); animation: copyright-turn 5s linear infinite; }
+  .icon-copyright::before { content: 'C'; position: absolute; inset: 0; text-align: center; font: 600 .68em/1.1 'Onest', sans-serif; }
+  @keyframes info-pulse { 50% { transform: scale(1.12); } }
+  @keyframes scale-swing { 0%, 100% { transform: rotate(-7deg); } 50% { transform: rotate(7deg); } }
+  @keyframes chart-rise { from { transform: scaleY(.42); transform-origin: bottom; } to { transform: scaleY(1); transform-origin: bottom; } }
+  @keyframes ban-shake { 0%, 80%, 100% { transform: rotate(0); } 86% { transform: rotate(-12deg); } 92% { transform: rotate(12deg); } }
+  @keyframes links-turn { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg); } }
+  @keyframes clipboard-tap { 0%, 100% { transform: translateY(0); } 45% { transform: translateY(-2px); } }
+  @keyframes envelope-flap { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-6deg); } }
+  @keyframes warning-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+  @keyframes pin-drop { 0%, 100% { transform: translateY(0) rotate(0); } 55% { transform: translateY(-3px) rotate(5deg); } }
+  @keyframes copyright-turn { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .css-emoji { animation: none !important; } }
   .sla-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; margin-top: 16px; }
   .sla-card {
     background: var(--surface2);
@@ -263,13 +313,17 @@
     font-family: 'Unbounded', sans-serif;
     font-size: 1.8rem;
     font-weight: 900;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #398dff;
+    height: 1em;
+    overflow: hidden;
     line-height: 1;
     margin-bottom: 6px;
   }
+  .slot-reel { display: block; transition: transform 2s cubic-bezier(.14,.86,.21,1), filter .2s ease; }
+  .slot-reel span { display: block; height: 1em; line-height: 1em; white-space: nowrap; }
+  .sla-days.is-rolling .slot-reel { filter: blur(.35px); }
+  .sla-days.is-resetting .slot-reel { transition: none; }
+  @media (prefers-reduced-motion: reduce) { .slot-reel { transition: none; } }
   .sla-label { font-size: 11px; color: var(--muted); font-weight: 500; }
   footer { text-align: center; padding: 40px 24px 20px; color: var(--muted); font-size: 12px; line-height: 1.8; }
   footer strong { color: var(--text); }
@@ -287,7 +341,7 @@
   <h1>Условия использования</h1>
   <p class="hero-sub">Telegram-бот <strong>FernieX</strong> — правила доступа к сервису, права и обязанности пользователей</p>
   <div class="hero-meta">
-    <span class="meta-chip"><span class="dot"></span>Редакция: 11 апреля 2026 г.</span>
+    <span class="meta-chip"><span class="dot"></span>Редакция: 29 сентября 2026 г.</span>
     <span class="meta-chip"><span class="dot" style="background:#ffd94a"></span>ГК РФ · 149-ФЗ · 152-ФЗ</span>
     <span class="meta-chip"><span class="dot" style="background:#00ff88"></span>Вступает в силу с момента публикации</span>
   </div>
@@ -357,6 +411,11 @@
       <li><strong>Информационные сервисы:</strong> персональная и общая статистика, достижения, напоминания, уведомления;</li>
       <li><strong>Инструменты сообщества:</strong> автоматизация процессов в группах и каналах Telegram.</li>
     </ul>
+    <p>Функции статистики могут формировать годовые итоги по Telegram ID: в них учитываются числовые показатели игровых и социальных действий (например, переводы, заработок, игровые результаты, браки, дети и модерационные события), а также упоминания дня рождения. Отдельные отчёты показывают активность пользователя в подключённых чатах за выбранный период. Для счётчика активности учитывается число обычных текстовых сообщений, а не их полный текст. Подробнее о составе, целях и сроках обработки данных — в <a href="privacy.html">Политике конфиденциальности</a>.</p>
+    <div class="infobox blue">
+      <span class="infobox-icon">📊</span>
+      <p>Годовые итоги — статистическая функция Сервиса. Данные привязаны к аккаунту и году, используются для отображения отчётов. Некоторые отчёты активности могут отображаться участникам чата, в котором их запросили. Обработка выполняется согласно Политике конфиденциальности.</p>
+    </div>
     <div class="infobox gold">
       <span class="infobox-icon">⚠️</span>
       <p>Бот предоставляется <strong>на безвозмездной основе</strong>. Внутриигровые ценности не являются объектами гражданских прав и не могут быть обменяны на реальные деньги или иное имущество.</p>
@@ -591,9 +650,105 @@
 
 <footer>
   <strong>FernieX</strong> — Условия использования<br>
-  Редакция от 11 апреля 2026 г. &nbsp;·&nbsp; © 2026 FernieX. Все права защищены.<br>
+  Редакция от 29 сентября 2026 г. &nbsp;·&nbsp; © 2026 FernieX. Все права защищены.<br>
   Документ составлен в соответствии с требованиями ГК РФ, Федерального закона № 149-ФЗ и № 152-ФЗ
 </footer>
+
+<script>
+  const emojiIcons = new Map([
+    ['ℹ️', ['icon-info', 'Информация']],
+    ['⚖️', ['icon-scales', 'Правовая информация']],
+    ['📊', ['icon-chart', 'Статистика']],
+    ['🚫', ['icon-ban', 'Запрещено']],
+    ['🔗', ['icon-links', 'Ссылка']],
+    ['📋', ['icon-clipboard', 'Список']],
+    ['📨', ['icon-envelope', 'Обращение']],
+    ['⚠️', ['icon-warning', 'Внимание']],
+    ['📌', ['icon-pin', 'Важно']],
+    ['©', ['icon-copyright', 'Авторское право']],
+    ['©️', ['icon-copyright', 'Авторское право']],
+  ]);
+  const segmenter = new Intl.Segmenter('ru', { granularity: 'grapheme' });
+  const textWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  const textNodes = [];
+
+  while (textWalker.nextNode()) {
+    if (!textWalker.currentNode.parentElement.closest('script, style, .css-emoji')) {
+      textNodes.push(textWalker.currentNode);
+    }
+  }
+
+  let emojiIndex = 0;
+  for (const textNode of textNodes) {
+    const segments = [...segmenter.segment(textNode.data)];
+    if (!segments.some(({ segment }) => emojiIcons.has(segment))) continue;
+
+    const fragment = document.createDocumentFragment();
+    for (const { segment } of segments) {
+      const icon = emojiIcons.get(segment);
+      if (!icon) {
+        fragment.append(segment);
+        continue;
+      }
+
+      const element = document.createElement('span');
+      element.className = `css-emoji ${icon[0]}`;
+      element.setAttribute('role', 'img');
+      element.setAttribute('aria-label', icon[1]);
+      element.style.setProperty('--icon-delay', `${-(emojiIndex++ % 7) * 0.13}s`);
+      if (icon[0] === 'icon-chart') {
+        for (let index = 0; index < 3; index++) {
+          const bar = document.createElement('span');
+          bar.className = 'chart-bar';
+          element.append(bar);
+        }
+      }
+      fragment.append(element);
+    }
+    textNode.replaceWith(fragment);
+  }
+
+  for (const counter of document.querySelectorAll('.sla-days')) {
+    const target = Number(counter.textContent.trim());
+    const reel = document.createElement('span');
+    reel.className = 'slot-reel';
+    reel.setAttribute('aria-hidden', 'true');
+    counter.setAttribute('aria-label', String(target));
+    for (let value = 0; value <= target; value++) {
+      const slotValue = document.createElement('span');
+      slotValue.textContent = String(value);
+      reel.append(slotValue);
+    }
+    counter.replaceChildren(reel);
+
+    let rollId = 0;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) {
+        rollId++;
+        counter.classList.remove('is-rolling');
+        counter.classList.add('is-resetting');
+        reel.style.transform = 'translateY(0)';
+        void reel.offsetHeight;
+        counter.classList.remove('is-resetting');
+        return;
+      }
+
+      const currentRoll = ++rollId;
+      counter.classList.add('is-rolling');
+      requestAnimationFrame(() => {
+        if (currentRoll === rollId && counter.classList.contains('is-rolling')) {
+          reel.style.transform = `translateY(-${target}em)`;
+        }
+      });
+      reel.ontransitionend = event => {
+        if (event.propertyName === 'transform' && currentRoll === rollId) {
+          counter.classList.remove('is-rolling');
+        }
+      };
+    }, { threshold: 0.65 });
+    observer.observe(counter);
+  }
+</script>
 
 </body>
 </html>
